@@ -1,8 +1,19 @@
+body{
+	/* <!--background-color:#9bdbff;!--> */
+	background:url("../img/world2.png") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	fill : #AB7C94;
+
+}
+
 .customNavbar{
 	background-color: lavender;
 	box-shadow: 0px 0px 5px 0px #ccc;
 	background:linear-gradient(#f17300, #f8a559);
-	
+
 }
 
 .shadowForBox{
@@ -22,24 +33,11 @@
 	box-shadow: 0px 0px 6px 1px #013;
 }
 
-body{
-	/* <!--background-color:#9bdbff;!--> */
-	background:url("../img/world2.png") no-repeat center center fixed;
-	-webkit-background-size: cover;
-  	-moz-background-size: cover;
-  	-o-background-size: cover;
-	background-size: cover;
-	fill : #AB7C94;
 
-}
-
-.backgroundDiv{
-
-}
 
 .card-horizontal {
-    display: flex;
-    flex: 1 1 auto;
+	display: flex;
+	flex: 1 1 auto;
 }
 
 
@@ -51,12 +49,12 @@ body{
 
 .btnColor{
 	background-color: #fdb129;
-	border-color: #fdb129; 
+	border-color: #fdb129;
 }
 
 .btnColor:hover{
 	background-color:darkorange;
-	border-color:darkorange; 
+	border-color:darkorange;
 }
 .fa-check{
 	color:white;
@@ -64,10 +62,21 @@ body{
 
 .btn-success{
 	background-color:#f8a559;
-	border-color:#f8a559; 
+	border-color:#f8a559;
 }
 
 .btn-success:hover{
 	background-color:darkorange;
-	border-color:darkorange; 
+	border-color:darkorange;
+}
+
+.imgFlag {
+	max-height: 100%;
+	max-width: 100%;
+}
+@media (max-width: 767.98px) {
+	.imgFlag{
+		max-height: 30%;
+		max-width: 30%;
+	}
 }
