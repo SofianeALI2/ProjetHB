@@ -1,7 +1,6 @@
 package com.example.paysdata.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -11,8 +10,9 @@ public class Pays {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     private int numeroCode;
-    private String name,alpha2Code,alpah3Code,capital,altspelling,region,
-            subregion,population,demorym,currencies,langage,flag;
+    private long population;
+    private String name,alpha2Code, alpha3Code,capital,altspelling,region,
+            subregion,demorym,currencies,langage,flag;
     @ElementCollection
     @CollectionTable(
             name="borders",
@@ -23,12 +23,12 @@ public class Pays {
 
     }
 
-    public Pays(int numeroCode, String name, String alpha2Code, String alpah3Code, String capital, String altspelling, String region, String subregion, String population, String demorym,
+    public Pays(int numeroCode, String name, String alpha2Code, String alpha3Code, String capital, String altspelling, String region, String subregion, long population, String demorym,
                 String currencies, String langage, String flag, List<String> borders) {
         this.numeroCode = numeroCode;
         this.name = name;
         this.alpha2Code = alpha2Code;
-        this.alpah3Code = alpah3Code;
+        this.alpha3Code = alpha3Code;
         this.capital = capital;
         this.altspelling = altspelling;
         this.region = region;
@@ -73,12 +73,12 @@ public class Pays {
         this.alpha2Code = alpha2Code;
     }
 
-    public String getAlpah3Code() {
-        return alpah3Code;
+    public String getAlpha3Code() {
+        return alpha3Code;
     }
 
-    public void setAlpah3Code(String alpah3Code) {
-        this.alpah3Code = alpah3Code;
+    public void setAlpha3Code(String alpha3Code) {
+        this.alpha3Code = alpha3Code;
     }
 
     public String getCapital() {
@@ -113,11 +113,11 @@ public class Pays {
         this.subregion = subregion;
     }
 
-    public String getPopulation() {
+    public long getPopulation() {
         return population;
     }
 
-    public void setPopulation(String population) {
+    public void setPopulation(long population) {
         this.population = population;
     }
 
@@ -168,7 +168,7 @@ public class Pays {
                 ", numeroCode=" + numeroCode +
                 ", name='" + name + '\'' +
                 ", alpha2Code='" + alpha2Code + '\'' +
-                ", alpah3Code='" + alpah3Code + '\'' +
+                ", alpha3Code='" + alpha3Code + '\'' +
                 ", capital='" + capital + '\'' +
                 ", altspelling='" + altspelling + '\'' +
                 ", region='" + region + '\'' +
