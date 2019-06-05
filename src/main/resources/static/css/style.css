@@ -1,0 +1,73 @@
+.customNavbar{
+	background-color: lavender;
+	box-shadow: 0px 0px 5px 0px #ccc;
+	background:linear-gradient(#f17300, #f8a559);
+	
+}
+
+.shadowForBox{
+	/*box-shadow: 1px 1px 1px 1px #013;*/
+	/*background-color:rgb(219,228,238);*/
+	background-color: rgb(255,229,162);
+	/*background-color:rgba(0,0,0,0.5);*/
+
+}
+
+.shadowForBoxHeader{
+	/*box-shadow: 1px 1px 1px 1px #000;*/
+	/*background-color:#9bdbff;*/
+	background-color: #fdb129;
+}
+.shadowForForm{
+	box-shadow: 0px 0px 6px 1px #013;
+}
+
+body{
+	/* <!--background-color:#9bdbff;!--> */
+	background:url("../img/world2.png") no-repeat center center fixed;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+	background-size: cover;
+	fill : #AB7C94;
+
+}
+
+.backgroundDiv{
+
+}
+
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+
+.buttonToggleLeft{
+	padding: 0;
+	border: none;
+	background: none;
+}
+
+.btnColor{
+	background-color: #fdb129;
+	border-color: #fdb129; 
+}
+
+.btnColor:hover{
+	background-color:darkorange;
+	border-color:darkorange; 
+}
+.fa-check{
+	color:white;
+}
+
+.btn-success{
+	background-color:#f8a559;
+	border-color:#f8a559; 
+}
+
+.btn-success:hover{
+	background-color:darkorange;
+	border-color:darkorange; 
+}
