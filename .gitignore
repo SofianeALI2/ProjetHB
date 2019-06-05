@@ -18,8 +18,7 @@ HELP.md
 *.iml
 *.ipr
 /out/
-C:\Users\HB\Documents\paysdata\ProjetHB\src\main\resources\application.properties
-
+/src/main/resources/application.properties
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
