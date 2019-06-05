@@ -2,7 +2,7 @@ HELP.md
 .gradle
 /build/
 !gradle/wrapper/gradle-wrapper.jar
-/application.properties/
+
 ### STS ###
 .apt_generated
 .classpath
@@ -18,7 +18,7 @@ HELP.md
 *.iml
 *.ipr
 /out/
-
+/src/main/resources/application.properties
 
 ### NetBeans ###
 /nbproject/private/
