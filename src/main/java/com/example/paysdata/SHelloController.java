@@ -10,7 +10,7 @@ public class SHelloController {
 
     @GetMapping("")
     public String index() {
-        return "Site/index";
+        return "Site/pays";
     }
 
 }
