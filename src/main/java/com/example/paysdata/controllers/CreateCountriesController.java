@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import org.json.*;
 
 import java.util.ArrayList;
 
@@ -27,7 +28,7 @@ public class CreateCountriesController {
     ArrayList<String> countryCodes = new ArrayList<>();
     countryCodes.add("FRA");
     String json = getJsonOfCountry(countryCodes.get(0));
-    System.out.println(json);
+    Pays pays = jsonToPays(json);
     return json;
 
     }
@@ -45,6 +46,26 @@ public class CreateCountriesController {
             ex.printStackTrace();
         }
         return jsonResult;
+    }
+
+    private Pays jsonToPays(String json){
+        JSONObject countryJSON = new JSONObject(json);
+        int numeroCode = countryJSON.getInt("numericCode");
+        String name = countryJSON.getString("name");
+        String alpha2Code = countryJSON.getString("alpha2Code");
+        String alpha3Code = countryJSON.getString("alpha3Code");
+        String capital = countryJSON.getString("capital");
+        String altspelling = countryJSON.getJSONArray("altspelling").getString(1);
+        String region = countryJSON.getString("region");
+        String subregion =countryJSON.getString("subregion");
+        long population = countryJSON.getLong("population");
+        String demorym = countryJSON.getString("demorym");
+        String currencies = countryJSON.getJSONArray("currencies").getJSONObject(0).getString("name");
+        String langage = langage;
+        String flag = countryJSON.getString("flag");
+        String borders = borders;
+
+        return null;
     }
 
 }
