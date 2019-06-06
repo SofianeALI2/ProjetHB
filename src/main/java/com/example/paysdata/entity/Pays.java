@@ -1,5 +1,7 @@
 package com.example.paysdata.entity;
 
+import com.google.gson.Gson;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -180,5 +182,10 @@ public class Pays {
                 ", flag='" + flag + '\'' +
                 ", borders=" + borders +
                 '}';
+    }
+
+    public String toJson(){
+        Gson gson = new Gson();
+        return(gson.toJson(this));
     }
 }

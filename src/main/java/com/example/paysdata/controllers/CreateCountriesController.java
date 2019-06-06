@@ -49,23 +49,9 @@ public class CreateCountriesController {
     }
 
     private Pays jsonToPays(String json){
-        JSONObject countryJSON = new JSONObject(json);
-        int numeroCode = countryJSON.getInt("numericCode");
-        String name = countryJSON.getString("name");
-        String alpha2Code = countryJSON.getString("alpha2Code");
-        String alpha3Code = countryJSON.getString("alpha3Code");
-        String capital = countryJSON.getString("capital");
-        String altspelling = countryJSON.getJSONArray("altspelling").getString(1);
-        String region = countryJSON.getString("region");
-        String subregion =countryJSON.getString("subregion");
-        long population = countryJSON.getLong("population");
-        String demorym = countryJSON.getString("demorym");
-        String currencies = countryJSON.getJSONArray("currencies").getJSONObject(0).getString("name");
-        String langage = langage;
-        String flag = countryJSON.getString("flag");
-        String borders = borders;
-
         return null;
     }
+
+
 
 }
