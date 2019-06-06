@@ -5,7 +5,10 @@ import com.example.paysdata.entity.Pays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PaysServiceMysql {
@@ -26,6 +29,7 @@ public class PaysServiceMysql {
 
 
     public void removePaysById(int id) {
+
         this.paysDao.deleteById( id);
     }
 
@@ -36,6 +40,10 @@ public class PaysServiceMysql {
     public Pays insertPays(Pays pays) {
         this.paysDao.save(pays);
         return pays;
+    }
+
+    public List<Pays> getByAlpha3Code(String code){
+        return (this.paysDao.findByAlpha3Code(code));
     }
 
 }

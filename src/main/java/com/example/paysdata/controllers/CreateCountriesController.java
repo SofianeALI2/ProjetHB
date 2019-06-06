@@ -19,12 +19,13 @@ import java.util.ArrayList;
 @RequestMapping("/createCountries")
 public class CreateCountriesController {
     @Autowired
-    private PaysServiceMysql paysServiceMusql;
+    private PaysServiceMysql paysServiceMysql;
 
     @GetMapping(value="" , produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
 
     public String initService(Model model) {
+
 
         JSONArray countryJSON = new JSONArray(getJsonListPays());
 
@@ -33,7 +34,7 @@ public class CreateCountriesController {
         for(int i=0;i<countryJSON.length();i++) {
             Pays pays = jsonToPays(countryJSON.get(i).toString());
             //Ajouter pays dans la DataBase
-            paysServiceMusql.insertPays(pays);
+            paysServiceMysql.insertPays(pays);
         }
         return null;
     }
@@ -98,6 +99,7 @@ public class CreateCountriesController {
         pays.setCurrencies(curencies);
 
         /////////
+
         pays.setLangage(countryJSON.getJSONArray("languages").getJSONObject(0).getString("name"));
         pays.setFlag(countryJSON.getString("flag"));
         JSONArray bordersjson = countryJSON.getJSONArray("borders");
