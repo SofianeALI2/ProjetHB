@@ -6,34 +6,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class PaysServiceMysql {
 
     @Autowired
-    private PaysDaoCrudRepo todoDao;
+    private PaysDaoCrudRepo paysDAO;
 
     public Collection<Pays> getAllPays(){
-        return (Collection<Pays>) this.todoDao.findAll();
+        return (Collection<Pays>) this.paysDAO.findAll();
     }
 
     public Optional<Pays> getPaysById(int id){
-        return this.todoDao.findById((int) id);
+        return this.paysDAO.findById((int) id);
     }
 
 
     public void removePaysById(int id) {
-        this.todoDao.deleteById( id);
+        this.paysDAO.deleteById( id);
     }
 
     public void updatePays(Pays pays){
-        //  this.todoDao.findByUpdate(todo);
+        //  this.paysDAO.findByUpdate(todo);
+        this.paysDAO.save(pays);
     }
 
-    public Pays insertTodo(Pays pays) {
-        this.todoDao.save(pays);
+    public Pays insertPays(Pays pays) {
+        this.paysDAO.save(pays);
         return pays;
+    }
+
+    public List<Pays> getByAlpha3Code(String code){
+        return (this.paysDAO.findByAlpha3Code(code));
     }
 
 }

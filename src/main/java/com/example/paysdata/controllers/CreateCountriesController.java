@@ -20,7 +20,7 @@ import java.util.ArrayList;
 @RequestMapping("/createCountries")
 public class CreateCountriesController {
     @Autowired
-    private PaysServiceMysql paysServiceMusql;
+    private PaysServiceMysql paysServiceMysql;
 
     @GetMapping(value="" , produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
@@ -29,6 +29,8 @@ public class CreateCountriesController {
     countryCodes.add("FRA");
     String json = getJsonOfCountry(countryCodes.get(0));
     Pays pays = jsonToPays(json);
+    paysServiceMysql.insertPays(pays);
+
     return pays.toString();
     }
 
