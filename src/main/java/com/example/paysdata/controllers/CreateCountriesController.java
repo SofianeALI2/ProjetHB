@@ -4,7 +4,6 @@ import com.example.paysdata.entity.Pays;
 import com.example.paysdata.service.PaysServiceMysql;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -61,7 +60,7 @@ public class CreateCountriesController {
         pays.setRegion(countryJSON.getString("region"));
         pays.setSubregion(countryJSON.getString("subregion"));
         pays.setPopulation(countryJSON.getLong("population"));
-        pays.setDemorym(countryJSON.getString("demonym"));
+        pays.setDemonym(countryJSON.getString("demonym"));
         pays.setCurrencies(countryJSON.getJSONArray("currencies").getJSONObject(0).getString("name"));
         pays.setLangage(countryJSON.getJSONArray("languages").getJSONObject(0).getString("name"));
         pays.setFlag(countryJSON.getString("flag"));

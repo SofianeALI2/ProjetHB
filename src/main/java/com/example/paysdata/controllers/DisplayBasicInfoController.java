@@ -24,8 +24,9 @@ public class DisplayBasicInfoController {
     @Autowired
     private PaysServiceMysql paysServiceMysql;
 
+    @CrossOrigin
     @RequestMapping(value = "/{paysCode}", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
-    public String initService(@PathVariable("paysCode") String code) {
+    public String getJsonFromCode(@PathVariable("paysCode") String code) {
         List<Pays> countryList = paysServiceMysql.getByAlpha3Code(code);
         Pays paysToDisplay = countryList.get(0);
         return (paysToDisplay.toJson());

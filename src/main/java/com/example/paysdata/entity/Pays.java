@@ -14,7 +14,7 @@ public class Pays {
     private int numeroCode;
     private long population;
     private String name,alpha2Code, alpha3Code,capital,altspelling,region,
-            subregion,demorym,currencies,langage,flag;
+            subregion, demonym,currencies,langage,flag;
     @ElementCollection
     @CollectionTable(
             name="borders",
@@ -25,7 +25,7 @@ public class Pays {
 
     }
 
-    public Pays(int numeroCode, String name, String alpha2Code, String alpha3Code, String capital, String altspelling, String region, String subregion, long population, String demorym,
+    public Pays(int numeroCode, String name, String alpha2Code, String alpha3Code, String capital, String altspelling, String region, String subregion, long population, String demonym,
                 String currencies, String langage, String flag, List<String> borders) {
         this.numeroCode = numeroCode;
         this.name = name;
@@ -36,7 +36,7 @@ public class Pays {
         this.region = region;
         this.subregion = subregion;
         this.population = population;
-        this.demorym = demorym;
+        this.demonym = demonym;
         this.currencies = currencies;
         this.langage = langage;
         this.flag = flag;
@@ -123,12 +123,12 @@ public class Pays {
         this.population = population;
     }
 
-    public String getDemorym() {
-        return demorym;
+    public String getDemonym() {
+        return demonym;
     }
 
-    public void setDemorym(String demorym) {
-        this.demorym = demorym;
+    public void setDemonym(String demonym) {
+        this.demonym = demonym;
     }
 
     public String getCurrencies() {
@@ -176,7 +176,7 @@ public class Pays {
                 ", region='" + region + '\'' +
                 ", subregion='" + subregion + '\'' +
                 ", population='" + population + '\'' +
-                ", demorym='" + demorym + '\'' +
+                ", demonym='" + demonym + '\'' +
                 ", currencies='" + currencies + '\'' +
                 ", langage='" + langage + '\'' +
                 ", flag='" + flag + '\'' +

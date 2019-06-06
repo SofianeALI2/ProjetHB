@@ -30,11 +30,40 @@
 			<div class="card">
 				<div class="card-header shadowForBoxHeader border-0">NOM DU PAYS</div>
 				<div class = "card-body row table-primary shadowForBox  border-0 ml-0 mr-0">
-					<div class="col-11 col-md-2 mb-1 mb-md-0">
-						<img src="img/fr.svg" alt="drapeau" class = "imgFlag"/>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio mollitia illo adipisci sit culpa voluptatibus aliquid numquam maiores obcaecati nemo, eaque, assumenda dolores amet magnam modi? Nihil aliquid perferendis corrupti, quas vitae fuga omnis magnam at laudantium nobis id ut.</p>
+					<div class="col-11 col-md-4 mb-1 mb-md-0">
+						<img src="" alt="drapeau" class = "imgFlag" id="imgFlagId"/>
+						<p class="card-text">
+						<div class="table-responsive">
+							<table class="table">
+								<tbody>
+								<tr>
+									<th scope="row">Name</th>
+									<td score="row" id="nameTable"></td>
+								</tr>
+								<tr>
+									<th scope="row"> Alternative spelling</th>
+									<td score="row" id="altSpellTable"></td>
+								</tr>
+								<tr>
+									<th scope="row">Capital</th>
+									<td score="row" id="capitalTable"></td>
+								</tr>
+								<tr>
+									<th scope="row">Demonym</th>
+									<td score="row" id="demonymTable"></td>
+								</tr>
+								<tr>
+									<th scope="row">Langage</th>
+									<td score="row" id="langageTable"></td>
+								</tr>
+								</tbody>
+
+							</table>
+						</div>
+
+						</p>
 					</div>
-					<div class="col-11 col-md-10">
+					<div class="col-11 col-md-8">
 						<p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, quam placeat, eum enim tenetur, porro provident neque sequi explicabo accusamus ex quas nam temporibus, expedita! Nobis deleniti reiciendis eos quia laboriosam consectetur atque unde impedit quidem, rerum temporibus perspiciatis iusto earum inventore exercitationem repudiandae dolor libero, optio est velit, itaque possimus pariatur, dolorum a rem. Ad, et minima assumenda animi quis necessitatibus asperiores, sit voluptatibus facere vitae placeat impedit sed? Cum in asperiores, error nisi atque iusto itaque expedita quasi. Porro inventore, neque eius repellendus! Saepe doloremque et, assumenda praesentium. Facilis nihil est sapiente dicta mollitia fugit sunt! Suscipit at natus officia aliquid repudiandae id, provident et, maiores dignissimos, tenetur harum eos dolorem modi fugit velit quod reprehenderit adipisci magnam possimus sapiente deleniti. Natus accusantium illo laudantium, perferendis tempore, nisi doloribus porro suscipit, perspiciatis voluptates nostrum ipsa rem ex mollitia necessitatibus optio commodi neque! Architecto minus voluptate neque optio eius quod asperiores, provident qui debitis dolor porro laborum odit expedita molestiae natus quasi reiciendis tempore delectus, ut ipsam. Tempore odio vitae enim nostrum, dolores architecto accusamus consequuntur reprehenderit soluta debitis officiis in quod ullam rerum officia facilis. Veritatis fugiat perferendis, libero, error maxime, quam eos maiores, tempore dolores laboriosam qui.</p>
 					</div>
 				</div>
@@ -47,10 +76,12 @@
 			<div class="card">
 				<div class="card-header shadowForBoxHeader border-0">NOM DU PAYS</div>
 				<div class = "row card-body table-primary shadowForBox ml-0 mr-0">
-					<div class="col-11 col-md-2 mb-1 mb-md-0">
+					<div class="col-11 col-md-3 mb-1 mb-md-0">
+						<img src="" alt="map" class = "imgFlag" id="imgMapId"/>
+
 						<p class="card-text">GENERAL INFO Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam atque a, accusantium, dolorum vel eaque adipisci laboriosam, voluptatem nulla, odio aliquam. Ratione voluptatum, in hic.</p>
 					</div>
-					<div class="col-11 col-md-10">
+					<div class="col-11 col-md-9">
 						<div class="d-flex flex-column" id="accordeon">
 							<button class = "btn btn-primary mb-1 btnColor" data-toggle="collapse" data-target="#panneau1">Panneau 1</button>
 							<section class="collapse p-3" id="panneau1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quasi eveniet repellat deleniti natus quo velit, dolorum, incidunt suscipit veritatis.</section>
@@ -75,5 +106,6 @@
 
 <script src="js/jquery-3.4.1.slim.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/basicInfoGetter.js"></script>
 </body>
 </html>
