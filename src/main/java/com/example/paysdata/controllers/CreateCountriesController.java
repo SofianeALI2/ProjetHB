@@ -4,7 +4,6 @@ import com.example.paysdata.entity.Pays;
 import com.example.paysdata.service.PaysServiceMysql;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,19 +23,26 @@ public class CreateCountriesController {
 
     @GetMapping(value="" , produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
+
     public String initService(Model model) {
-    ArrayList<String> countryCodes = new ArrayList<>();
-    countryCodes.add("FRA");
-    String json = getJsonOfCountry(countryCodes.get(0));
-    Pays pays = jsonToPays(json);
-    return pays.toString();
+
+        JSONArray countryJSON = new JSONArray(getJsonListPays());
+
+        //parcourire la liste des pays et ajoutee dans la  DataBase
+
+        for(int i=0;i<countryJSON.length();i++) {
+            Pays pays = jsonToPays(countryJSON.get(i).toString());
+            //Ajouter pays dans la DataBase
+            paysServiceMusql.insertPays(pays);
+        }
+        return null;
     }
 
-    private String getJsonOfCountry(String countryCode) {
+    private String getJsonListPays() {
         String str ="";
         String jsonResult = "";
         try {
-            URL url = new URL("https://restcountries.eu/rest/v2/alpha/" + countryCode);
+            URL url = new URL("https://restcountries.eu/rest/v2/all");
             BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
             while (null != (str = br.readLine())) {
                 jsonResult += str;
@@ -47,20 +53,51 @@ public class CreateCountriesController {
         return jsonResult;
     }
 
+
+
     private Pays jsonToPays(String json){
         Pays pays=new Pays();
         JSONObject countryJSON = new JSONObject(json);
-        pays.setNumeroCode(countryJSON.getInt("numericCode"));
+        //test sur numeroCode
+        int numerocode=0;
+        try {
+            numerocode=countryJSON.getInt("numericCode");
+        }catch (Exception e){
+            e.printStackTrace();
+            numerocode=0;
+        }
+        pays.setNumeroCode(numerocode);
         pays.setName(countryJSON.getString("name"));
         pays.setAlpha2Code(countryJSON.getString("alpha2Code"));
         pays.setAlpha3Code(countryJSON.getString("alpha3Code"));
         pays.setCapital(countryJSON.getString("capital"));
-        pays.setAltspelling(countryJSON.getJSONArray("altSpellings").getString(1));
+        //test sur altspling
+        String altsplings="";
+        try {
+            altsplings=  countryJSON.getJSONArray("altSpellings").getString(1);
+        }catch (Exception e){
+            e.printStackTrace();
+            altsplings=null;
+        }
+            //////////
+        pays.setAltspelling(altsplings);
+
+
         pays.setRegion(countryJSON.getString("region"));
         pays.setSubregion(countryJSON.getString("subregion"));
         pays.setPopulation(countryJSON.getLong("population"));
-        pays.setDemorym(countryJSON.getString("demonym"));
-        pays.setCurrencies(countryJSON.getJSONArray("currencies").getJSONObject(0).getString("name"));
+        pays.setDemonym(countryJSON.getString("demonym"));
+        //test sur curencies
+        String curencies="";
+        try {
+            curencies=  countryJSON.getJSONArray("currencies").getJSONObject(0).getString("name");
+        }catch (Exception e){
+            e.printStackTrace();
+            curencies=null;
+        }
+        pays.setCurrencies(curencies);
+
+        /////////
         pays.setLangage(countryJSON.getJSONArray("languages").getJSONObject(0).getString("name"));
         pays.setFlag(countryJSON.getString("flag"));
         JSONArray bordersjson = countryJSON.getJSONArray("borders");
@@ -73,7 +110,6 @@ public class CreateCountriesController {
 
         return pays;
     }
-
 
 
 }

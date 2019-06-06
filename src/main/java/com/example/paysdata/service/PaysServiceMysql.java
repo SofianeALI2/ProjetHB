@@ -5,34 +5,36 @@ import com.example.paysdata.entity.Pays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class PaysServiceMysql {
 
     @Autowired
-    private PaysDaoCrudRepo todoDao;
+    private PaysDaoCrudRepo paysDao;
 
     public Collection<Pays> getAllPays(){
-        return (Collection<Pays>) this.todoDao.findAll();
+        return (Collection<Pays>) this.paysDao.findAll();
+    }
+    public List<Object[]> getAllNamePays(){
+        return this.paysDao.findAllNameAlphacode();
     }
 
     public Optional<Pays> getPaysById(int id){
-        return this.todoDao.findById((int) id);
+        return this.paysDao.findById( id);
     }
 
 
     public void removePaysById(int id) {
-        this.todoDao.deleteById( id);
+        this.paysDao.deleteById( id);
     }
 
     public void updatePays(Pays pays){
-        //  this.todoDao.findByUpdate(todo);
+        this.paysDao.save(pays);
     }
 
-    public Pays insertTodo(Pays pays) {
-        this.todoDao.save(pays);
+    public Pays insertPays(Pays pays) {
+        this.paysDao.save(pays);
         return pays;
     }
 
