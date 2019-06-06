@@ -174,7 +174,7 @@ public class Pays {
                 ", region='" + region + '\'' +
                 ", subregion='" + subregion + '\'' +
                 ", population='" + population + '\'' +
-                ", demorym='" + demorym + '\'' +
+                ", demonym='" + demorym + '\'' +
                 ", currencies='" + currencies + '\'' +
                 ", langage='" + langage + '\'' +
                 ", flag='" + flag + '\'' +
