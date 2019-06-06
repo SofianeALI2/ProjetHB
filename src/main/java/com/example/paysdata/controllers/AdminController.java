@@ -16,6 +16,7 @@ public class AdminController {
 
     @GetMapping("")
     public String greetingForm(Model model) {
+
         return "Site/admin";
     }
 
