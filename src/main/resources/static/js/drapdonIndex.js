@@ -18,15 +18,19 @@ var jsonRequestpays = function(){
             var data = eval('('+this.responseText+')');
             let option;
             for (let i = 0; i < data.length; i++) {
+
                 option = document.createElement('option');
-                option.text = data[i].name;
+                option.text=data[i].name;
                 option.value = data[i].alpha3Code;
+                option.innerText="<i class=\"fab fa-accessible-icon\"></i>";
+                option.inne
+                //option.innerHTML="<i class=\"fab fa-accessible-icon\"></i>"+data[i].name;
                 dropdown.add(option);
             }
         }
     };
     httpRequest.open("GET", url , true);
-    httpRequest.setRequestHeader('Content-Type','application/json;charset-UTF-8');
+    httpRequest.setRequestHeader('Content-Type', 'application/json;charset-UTF-8');
     httpRequest.send();
 }
 window.onload = jsonRequestpays;
