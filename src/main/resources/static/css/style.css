@@ -80,3 +80,11 @@ body{
 		max-width: 60%;
 	}
 }
+
+.table-primary th, .table-primary thead th{
+	border-color: #f8a559;
+}
+
+.table-primary tbody+tbody, .table-primary td, .table-primary th, .table-primary thead th{
+	border-color: #f8a559;
+}

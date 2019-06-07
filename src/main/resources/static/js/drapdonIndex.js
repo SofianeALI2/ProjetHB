@@ -21,6 +21,7 @@ var jsonRequestpays = function(){
                 option = document.createElement('option');
                 option.text = data[i].name;
                 option.value = data[i].alpha3Code;
+                option.data
                 dropdown.add(option);
             }
         }
