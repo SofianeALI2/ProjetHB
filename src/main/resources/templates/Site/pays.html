@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<title>Document</title>
+
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
 	<link rel="stylesheet" href="css/style.css" />
 	<script src="https://kit.fontawesome.com/41ed203bd1.js"></script>
+
 </head>
 <body>
+<p hidden id="AlphaCode" th:text="${code3Alpha}"></p>
 <header class="navbar navbar-expand-md customNavbar">
 	<button class="navbar-brand buttonToggleLeft">
 		<i class="fas fa-bars buttonToggleLeft"></i>
@@ -34,7 +37,7 @@
 						<img src="" alt="drapeau" class = "imgFlag" id="imgFlagId"/>
 						<p class="card-text">
 						<div class="table-responsive">
-							<table class="table">
+							<table class="table table-bordered">
 								<tbody>
 								<tr>
 									<th scope="row">Name</th>
@@ -56,6 +59,11 @@
 									<th scope="row">Langage</th>
 									<td score="row" id="langageTable"></td>
 								</tr>
+								<tr>
+									<th scope="row">Currency</th>
+									<td score="row" id="currencyTable"></td>
+								</tr>
+
 								</tbody>
 
 							</table>
@@ -76,12 +84,33 @@
 			<div class="card">
 				<div class="card-header shadowForBoxHeader border-0">NOM DU PAYS</div>
 				<div class = "row card-body table-primary shadowForBox ml-0 mr-0">
-					<div class="col-11 col-md-3 mb-1 mb-md-0">
-						<img src="" alt="map" class = "imgFlag" id="imgMapId"/>
+					<div class="col-12 col-md-4 mb-1 mb-md-0">
+						<img src="" alt="map" class = "imgFlag mb-3" id="imgMapId"/>
+						<div class="table-responsive">
+							<table class="table table-bordered">
+								<tbody>
+								<tr>
+									<th scope="row">Region</th>
+									<td score="row" id="regionTable"></td>
+								</tr>
+								<tr>
+									<th scope="row"> Subregion</th>
+									<td score="row" id="subregionTable"></td>
+								</tr>
+								<tr>
+									<th scope="row">Population</th>
+									<td score="row" id="populationTable"></td>
+								</tr>
+								<tr>
+									<th scope="row">Borders</th>
+									<td score="row" id="bordersTable"></td>
+								</tr>
+								</tbody>
 
-						<p class="card-text">GENERAL INFO Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam atque a, accusantium, dolorum vel eaque adipisci laboriosam, voluptatem nulla, odio aliquam. Ratione voluptatum, in hic.</p>
+							</table>
+						</div>
 					</div>
-					<div class="col-11 col-md-9">
+					<div class="col-11 col-md-8">
 						<div class="d-flex flex-column" id="accordeon">
 							<button class = "btn btn-primary mb-1 btnColor" data-toggle="collapse" data-target="#panneau1">Panneau 1</button>
 							<section class="collapse p-3" id="panneau1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quasi eveniet repellat deleniti natus quo velit, dolorum, incidunt suscipit veritatis.</section>

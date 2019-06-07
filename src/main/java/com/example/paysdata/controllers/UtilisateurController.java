@@ -16,5 +16,7 @@ public class UtilisateurController {
 
     @CrossOrigin
     @RequestMapping( method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
-    public string
+    public String addUtilisateur(){
+        return null;
+    }
 }
