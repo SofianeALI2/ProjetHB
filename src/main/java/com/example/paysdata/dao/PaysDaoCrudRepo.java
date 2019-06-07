@@ -12,6 +12,6 @@ import java.util.List;
 public interface PaysDaoCrudRepo extends CrudRepository<Pays, Integer> {
     List<Pays> findByAlpha3Code(String alpha3Code);
 
-    @Query("Select p.name ,p.alpha2Code from Pays as p ")
+    @Query("Select p.name ,p.alpha2Code ,p.alpha3Code from Pays as p ")
     List<Object[]> findAllNameAlphacode();
 }

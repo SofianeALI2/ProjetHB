@@ -8,10 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class SHelloController {
 
-    @GetMapping("")
+    @GetMapping("/pays")
     public String index() {
 
         return "Site/pays";
+    }
+    @GetMapping("/index")
+    public String indexx() {
+
+        return "Site/index";
     }
 
 }

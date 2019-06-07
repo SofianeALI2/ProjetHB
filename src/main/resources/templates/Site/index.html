@@ -33,19 +33,18 @@
   <div class="row mt-5">
     <div class="col-8 offset-1 col-md-7 offset-md-2 col-lg-5 offset-lg-4 form-group text-center">
      <label for="country">Pays choisi</label>
-     <div class ="input-group shadowForForm">
-       <select name="country" id="country" class="form-control">
-         <option value="0">--Choisissez votre pays--</option>
-         <option value="BE">Belgique</option>
-         <option value="CA">Canada</option>
-         <option value="FR">France</option>
-         <option value="CH">Suisse</option>
-       </select>
-       <div class="input-group-append">
-         <button class="btn btn-success"><span> <i class="fas fa-check"></i> </span></button>
-       </div>
+        <form id="display" action="/displayPays" method="get">
+        <div class ="input-group shadowForForm">
+        <select name="country" id="country" class="form-control">
+
+        </select>
+         <div class="input-group-append">
+             <button type="submit" class="btn btn-success"><span>
+                 <i class="fas fa-check"></i> </span></button>
+         </div>
      </div>
-   </div>
+        </form>
+    </div>
  </div>
  <div class="row mt-5">
   <div class="col-10 offset-1 col-md-5 offset-md-1 rounded mb-3">
@@ -71,7 +70,9 @@
 
 </main>
 
-<script src="../../static/js/jquery-3.4.1.slim.js"></script>
-<script src="../../static/js/bootstrap.bundle.min.js"></script>
+  <script src="../../static/js/jquery-3.4.1.slim.js"></script>
+  <script src="../../static/js/bootstrap.bundle.min.js"></script>
+  <script src="js/basicInfoGetter.js"></script>
+
 </body>
 </html>
