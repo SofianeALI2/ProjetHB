@@ -21,7 +21,12 @@ public class Pays {
             name="borders",
             joinColumns=@JoinColumn(name="OWNER_ID")
     )
-     private List<String> borders;
+
+    private List<String> borders;
+    private String ciaDataName;
+    @Column(columnDefinition="LONGTEXT")
+    private String introText ;
+    private String ciaCode;
     public Pays() {
 
     }
@@ -42,6 +47,17 @@ public class Pays {
         this.langage = langage;
         this.flag = flag;
         this.borders = borders;
+        this.ciaDataName = null;
+        this.introText = null;
+        this.ciaCode = null;
+    }
+
+    public String getCiaDataName() {
+        return ciaDataName;
+    }
+
+    public void setCiaDataName(String ciaDataName) {
+        this.ciaDataName = ciaDataName;
     }
 
     public int getId() {
@@ -50,6 +66,22 @@ public class Pays {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getCiaCode() {
+        return ciaCode;
+    }
+
+    public void setCiaCode(String ciaCode) {
+        this.ciaCode = ciaCode;
+    }
+
+    public String getIntroText() {
+        return introText;
+    }
+
+    public void setIntroText(String introText) {
+        this.introText = introText;
     }
 
     public int getNumeroCode() {
