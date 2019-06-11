@@ -46,5 +46,10 @@ public class PaysServiceMysql {
         return (this.paysDao.findByAlpha3Code(code));
     }
 
+    public List<Object[]> getAllNameCapitalAlpha2Alpha3(){
+        return this.paysDao.findAllNameCapitalAlpha2Alpha3();
+    }
+
+
 }
 
