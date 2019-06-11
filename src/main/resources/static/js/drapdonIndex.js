@@ -1,10 +1,10 @@
 
 var jsonRequestpays = function(){
 
-    let dropdown = document.getElementById('country');
+    var dropdown = document.getElementById('country');
     dropdown.length = 0;
 
-    let defaultOption = document.createElement('option');
+    var defaultOption = document.createElement('option');
     defaultOption.text = '--Choisissez votre pays--';
 
     dropdown.add(defaultOption);
@@ -16,11 +16,14 @@ var jsonRequestpays = function(){
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
             var data = eval('('+this.responseText+')');
-            let option;
-            for (let i = 0; i < data.length; i++) {
+            var option;
+            for (var i = 0; i < data.length; i++) {
                 option = document.createElement('option');
                 option.text = data[i].name;
                 option.value = data[i].alpha3Code;
+                var flagicon = document.createElement("i");
+
+                option.appendChild()
                 option.data
                 dropdown.add(option);
             }
@@ -30,5 +33,7 @@ var jsonRequestpays = function(){
     httpRequest.setRequestHeader('Content-Type','application/json;charset-UTF-8');
     httpRequest.send();
 }
-window.onload = jsonRequestpays;
+window.onload = function(){
+    jsonRequestpays();
+}
 
