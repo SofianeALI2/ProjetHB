@@ -21,10 +21,6 @@ var jsonRequestpays = function(){
                 option = document.createElement('option');
                 option.text = data[i].name;
                 option.value = data[i].alpha3Code;
-                var flagicon = document.createElement("i");
-
-                option.appendChild()
-                option.data
                 dropdown.add(option);
             }
         }
