@@ -14,12 +14,12 @@ public class Utilisateur {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String identifiant,passWord;
-    private Email email;
+    private String email;
 
     public Utilisateur() {
     }
 
-    public Utilisateur(String identifiant, String passWord, Email email) {
+    public Utilisateur(String identifiant, String passWord, String email) {
         this.identifiant = identifiant;
         this.passWord = passWord;
         this.email = email;
@@ -49,11 +49,11 @@ public class Utilisateur {
         this.passWord = passWord;
     }
 
-    public Email getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(Email email) {
+    public void setEmail(String email) {
         this.email = email;
     }
     public String toJson(){

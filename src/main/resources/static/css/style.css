@@ -88,3 +88,27 @@ body{
 .table-primary tbody+tbody, .table-primary td, .table-primary th, .table-primary thead th{
 	border-color: #f8a559;
 }
+
+.big-model{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.7);
+	position: absolute;
+	top:0;
+	justify-content: center;
+	align-items: center;
+}
+
+.model-content{
+	width: 300px;
+	height: 400px;
+	background-color: white;
+	border-radius: 4px;
+	text-align: center;
+
+}
+
+.form-control{
+	width: 20vw;
+
+}
