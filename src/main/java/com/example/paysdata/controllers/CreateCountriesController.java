@@ -1,6 +1,9 @@
 package com.example.paysdata.controllers;
 
+import com.example.paysdata.entity.LanguagesProp;
 import com.example.paysdata.entity.Pays;
+import com.example.paysdata.entity.Sectorial;
+import com.example.paysdata.service.LanguagePropService;
 import com.example.paysdata.service.PaysServiceMysql;
 import com.example.paysdata.utilClasses.CIAObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +21,7 @@ import org.json.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,6 +34,9 @@ public class CreateCountriesController {
 
     @Autowired
     private PaysServiceMysql paysServiceMysql;
+
+    @Autowired
+    private LanguagePropService languagePropService;
 
     @GetMapping(value="" , produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
@@ -66,8 +69,222 @@ public class CreateCountriesController {
 
     private Pays setCIaInfo(Pays pays, JSONObject ciaJson) {
         String paysName = pays.getCiaDataName();
-        String ciaCode = getCiaCode(ciaJson.getJSONObject("countries").getJSONObject(paysName).getJSONObject("metadata").getString("source"));
-        String textIntro = ciaJson.getJSONObject("countries").getJSONObject(paysName).getJSONObject("data").getJSONObject("introduction").getString("background");
+        System.out.println(paysName);
+        JSONObject countryInfo = ciaJson.getJSONObject("countries").getJSONObject(paysName);
+        JSONObject countryInfoPeople = countryInfo.getJSONObject("data").getJSONObject("people");
+        String ciaCode = getCiaCode(countryInfo.getJSONObject("metadata").getString("source"));
+        JSONObject countryInfoGovt = countryInfo.getJSONObject("data").getJSONObject("government");
+        JSONObject countryInfoEco = countryInfo.getJSONObject("data").getJSONObject("economy");
+        String textIntro = countryInfo.getJSONObject("data").getJSONObject("introduction").getString("background");
+        try {
+            double medianAge = countryInfoPeople.getJSONObject("median_age").getJSONObject("total").getDouble("value");
+            pays.setMedianAge(medianAge);
+        }catch(JSONException e){
+           // System.out.println("No median age for country :" + paysName);
+            pays.setMedianAge(0);
+        }
+
+        try{
+            double birthRate = countryInfoPeople.getJSONObject("birth_rate").getDouble("births_per_1000_population");
+            pays.setBirthRate(birthRate);
+
+        }catch(JSONException e){
+           // System.out.println("No birth rate for country :" + paysName);
+            pays.setMedianAge(0);
+        }
+        try{
+            double deathRate = countryInfoPeople.getJSONObject("death_rate").getDouble("deaths_per_1000_population");
+            pays.setDeathRate(deathRate);
+
+        }catch(JSONException e){
+           // System.out.println("No death rate for country :" + paysName);
+            pays.setMedianAge(0);
+        }
+
+        try{
+            double urbanPop =countryInfoPeople.getJSONObject("urbanization").getJSONObject("urban_population").getDouble("value");
+            pays.setUrbanPop(urbanPop);
+        }catch (JSONException e){
+           // System.out.println("No urbanPop for country :" + paysName);
+            pays.setUrbanPop(0);
+        }
+
+        try{
+            double sexRatio = countryInfoPeople.getJSONObject("sex_ratio").getJSONObject("total_population").getDouble("value");
+            pays.setSexRatio(sexRatio);
+        }catch(JSONException e){
+            //System.out.println("No sexRatio for country :" + paysName);
+            pays.setUrbanPop(0);
+        }
+
+        try{
+            double mobileAccess = countryInfo.getJSONObject("data").getJSONObject("communications").getJSONObject("telephones").getJSONObject("mobile_cellular").getDouble("subscriptions_per_one_hundred_inhabitants");
+            pays.setMobileAccess(mobileAccess);
+        }catch(JSONException e){
+           //System.out.println("No mobile for country :" + paysName);
+            pays.setMobileAccess(0);
+        }
+
+        try{
+            double internetAccess = countryInfo.getJSONObject("data").getJSONObject("communications").getJSONObject("internet").getJSONObject("users").getDouble("percent_of_population");
+            pays.setInternetAccess(internetAccess);
+        }catch(JSONException e){
+           // System.out.println("No internet for country :" + paysName);
+            pays.setInternetAccess(0);
+        }
+
+        try{
+            JSONObject ageStructure = countryInfoPeople.getJSONObject("age_structure");
+            double zero14 = ageStructure.getJSONObject("0_to_14").getDouble("percent");
+            double fifteen24= ageStructure.getJSONObject("15_to_24").getDouble("percent");;
+            double twentyFive54= ageStructure.getJSONObject("25_to_54").getDouble("percent");;
+            double fiftyFive64= ageStructure.getJSONObject("55_to_64").getDouble("percent");;
+            double over65 = ageStructure.getJSONObject("65_and_over").getDouble("percent");;
+            pays.setZero14(zero14);
+            pays.setFifteen24(fifteen24);
+            pays.setTwentyFive54(twentyFive54);
+            pays.setFiftyFive64(fiftyFive64);
+            pays.setOver65(over65);
+        }catch (JSONException e){
+            //System.out.println("No age structure for country :" + paysName);
+            pays.setZero14(-1);
+            pays.setFifteen24(-1);
+            pays.setTwentyFive54(-1);
+            pays.setFiftyFive64(-1);
+            pays.setOver65(-1);
+        }
+
+        try{
+            List<LanguagesProp> listofLanguages = new ArrayList<LanguagesProp>();
+            JSONArray languagesArray = countryInfoPeople.getJSONObject("languages").getJSONArray("language");
+            Iterator<Object> languagesArrayIterator = languagesArray.iterator();
+            boolean officialAlreadySet = false;
+            while(languagesArrayIterator.hasNext()){
+
+                JSONObject languagesIterated= (JSONObject) languagesArrayIterator.next();
+                if (languagesIterated.keySet().contains("percent")){
+                    LanguagesProp lp = new LanguagesProp(languagesIterated.getString("name"),languagesIterated.getDouble("percent"));
+                    listofLanguages.add(lp);
+                    if(languagesIterated.keySet().contains("note")){
+                        String notes = languagesIterated.getString("note");
+                        if(notes.substring(0,Math.min(8,notes.length())).equals("official") && (!officialAlreadySet)){
+                            pays.setLangage(lp.getLanguageName());
+                            officialAlreadySet = true;
+                        }
+                    }
+                   // languagePropService.insertLanguages(lp);
+                }
+            }
+
+            pays.setLanguagesProps(listofLanguages);
+        }catch (JSONException e){
+            System.out.println("Exception dans le language pour +" +paysName);
+            pays.setLanguagesProps(null);
+        }
+
+        //----------------Government:
+        try{
+            String govtType = countryInfoGovt.getString("government_type");
+            String chiefOfState = countryInfoGovt.getJSONObject("executive_branch").getString("chief_of_state");
+            String govtHead = countryInfoGovt.getJSONObject("executive_branch").getString("head_of_government");
+            String govtElect = countryInfoGovt.getJSONObject("executive_branch").getString("elections_appointments");
+            pays.setGovtType(govtType);
+            pays.setChiefOfState(chiefOfState);
+            pays.setGovtHead(govtHead);
+            pays.setGovtElect(govtElect);
+
+        }catch(JSONException e){
+            System.out.println("country For gouv + " + paysName);
+        }
+
+        //Socio-economic indicators & data
+
+        try {
+            pays.setInfantMortalityRate(countryInfoPeople.getJSONObject("infant_mortality_rate").
+                    getJSONObject("total").getDouble("value"));
+
+        }catch(JSONException e) {
+            pays.setInfantMortalityRate(0);
+        }
+        try {
+            pays.setLifeExpectancyAtBirth(countryInfoPeople.getJSONObject("life_expectancy_at_birth").
+                    getJSONObject("total_population").getDouble("value"));
+        }catch(JSONException e) {
+            pays.setLifeExpectancyAtBirth(0);
+        }
+        try {
+            pays.setHeatlthExpenditure(countryInfoPeople.getJSONObject("health_expenditures").
+                    getDouble("percent_of_gdp"));
+        }catch(JSONException e) {
+            pays.setHeatlthExpenditure(0);
+        }
+        try {
+            pays.setAdultObesity(countryInfoPeople.getJSONObject("adult_obesity").getDouble("percent_of_adults"));
+        }catch(JSONException e) {
+            pays.setAdultObesity(0);
+        }
+        try {
+            pays.setEducationExpenditure(countryInfoPeople.getJSONObject("education_expenditures").
+                    getDouble("percent_of_gdp"));
+        }catch(JSONException e) {
+            pays.setAdultObesity(0);
+        }
+        try{
+            pays.setLiteracy(countryInfoPeople.getJSONObject("literacy").getJSONObject("total_population").getDouble("value"));
+        }catch(JSONException e){
+            pays.setLiteracy(0);
+        }
+
+        try{
+            pays.setGdpPPP(countryInfoEco.getJSONObject("gdp").getJSONObject("purchasing_power_parity").getJSONArray("annual_values").getDouble(0));
+        }catch (JSONException e) {
+            pays.setGdpPPP(0);
+        }
+        try{
+            Sectorial gdpBySector = new Sectorial();
+            JSONObject gdpSectorJson = countryInfoEco.getJSONObject("gdp").getJSONObject("composition").getJSONObject("by_sector_of_origin").
+                    getJSONObject("sectors");
+            gdpBySector.setAgriculture(gdpSectorJson.getJSONObject("agriculture").getDouble("value"));
+            gdpBySector.setIndustry(gdpSectorJson.getJSONObject("industry").getDouble("value"));
+            gdpBySector.setServices(gdpSectorJson.getJSONObject("services").getDouble("value"));
+            pays.setGdpBySector(gdpBySector);
+        }catch(JSONException e){
+            pays.setGdpBySector(new Sectorial(0,0,0));
+        }
+
+        try{
+            pays.setTotalLaborForce(countryInfoEco.getJSONObject("labor_force").getJSONObject("total_size").getDouble("total_people"));
+        }catch(JSONException e){
+            pays.setTotalLaborForce(0);
+        }
+        try{
+            Sectorial laborForceBySector = new Sectorial();
+            JSONObject laborForceSector = countryInfoEco.getJSONObject("labor_force").getJSONObject("by_occupation").getJSONObject("occupation");
+            laborForceBySector.setAgriculture(laborForceSector.getJSONObject("agriculture").getDouble("value"));
+            laborForceBySector.setIndustry(laborForceSector.getJSONObject("industry").getDouble("value"));
+            laborForceBySector.setServices(laborForceSector.getJSONObject("services").getDouble("value"));
+            pays.setLaborForceBySector(laborForceBySector);
+        }catch(JSONException e){
+            pays.setLaborForceBySector(new Sectorial(0,0,0));
+        }
+
+        try{
+            pays.setPublicDebt(countryInfoEco.getJSONObject("public_debt").getJSONArray("annual_values").getJSONObject(0).getDouble("value"));
+        }catch(JSONException e){
+            pays.setPublicDebt(0);
+        }
+        try{
+            pays.setUnemployment(countryInfoEco.getJSONObject("unemployment_rate").getJSONArray("annual_values").getJSONObject(0).getDouble("value"));
+        }catch(JSONException e){
+            pays.setUnemployment(0);
+        }
+        try{
+            pays.setInflation(countryInfoEco.getJSONObject("inflation_rate").getJSONArray("annual_values").getJSONObject(0).getDouble("value"));
+        }catch(JSONException e){
+            pays.setInflation(0);
+        }
+
+
         pays.setIntroText(textIntro);
         pays.setCiaCode(ciaCode);
         return pays;

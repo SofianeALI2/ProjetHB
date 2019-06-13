@@ -40,6 +40,15 @@ var setTableElement = function(country){
     document.getElementById('bordersTable').innerHTML = country.borders;
     document.getElementById('currencyTable').innerHTML = country.currencies;
 
+   // ---------------- For poulation tableau ---------------------------
+    document.getElementById('popTable').innerHTML = country.population
+    document.getElementById('medianAgeTable').innerHTML = country.medianAge;
+    document.getElementById('birthRateTable').innerHTML = country.birthRate;
+    document.getElementById('urbanPopTable').innerHTML = country.urbanPop;
+    document.getElementById('deathRateTable').innerHTML = country.deathRate;
+    document.getElementById('sexRatioTable').innerHTML = country.sexRatio;
+    document.getElementById('mobileAccessTable').innerHTML = country.mobileAccess;
+    document.getElementById('internetAccessTable').innerHTML = country.internetAccess;
 
 }
 
@@ -56,6 +65,8 @@ var jsonRequest = function(code3Alpha){
             onImgLoad(country.flag);
             setTableElement(country);
             onMapLoad(country);
+            plotLanguageProp(country.languagesProps);
+            ageStructures(country);
 
         }
     };
@@ -64,13 +75,30 @@ var jsonRequest = function(code3Alpha){
     httpRequest.send();
 }
 
+var plotLanguageProp = function(langProp){
+    if(langProp.length ==  0){
+        document.getElementById("panneauLng").style.display = "none";
+        document.getElementById("btnLang").style.display = "none";
+    }
+    else{
+        document.getElementById("panneauLng").style.display = "block";
+        document.getElementById("btnLang").style.display = "block";
+        plotFunction(langProp);
+    }
+}
+
 var getAlpha3Code = function(){
 
 }
 
+var test = function(lng){
+    console.log(lng[0].languageName);
+    console.dir(lng);
+
+}
 window.onload = function(){
     var code3Alpha = document.getElementById("AlphaCode").innerHTML;
-    console.log("La valeur est " + code3Alpha);
     jsonRequest(code3Alpha);
+
 }
 

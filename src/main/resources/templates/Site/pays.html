@@ -8,6 +8,8 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
 	<link rel="stylesheet" href="css/style.css" />
 	<script src="https://kit.fontawesome.com/41ed203bd1.js"></script>
+	<link rel="stylesheet" href = "css/Chart.css" />
+	<script src = js/Chart.bundle.js></script>
 
 </head>
 <body>
@@ -28,6 +30,7 @@
 </header>
 
 <main class="container-fluid">
+
 	<div class="row mt-5">
 		<div class="col-11 rounded mb-3 ml-md-3">
 			<div class="card">
@@ -112,10 +115,56 @@
 					</div>
 					<div class="col-11 col-md-8">
 						<div class="d-flex flex-column" id="accordeon">
-							<button class = "btn btn-primary mb-1 btnColor" data-toggle="collapse" data-target="#panneau1">Panneau 1</button>
-							<section class="collapse p-3" id="panneau1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quasi eveniet repellat deleniti natus quo velit, dolorum, incidunt suscipit veritatis.</section>
-							<button class = "btn btn-primary mb-1 btnColor" data-toggle="collapse" data-target="#panneau2">Panneau 1</button>
-							<section class="collapse p-3" id="panneau2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quasi eveniet repellat deleniti natus quo velit, dolorum, incidunt suscipit veritatis.</section>
+							<button class = "btn btn-primary mb-1 btnColor" data-toggle="collapse" data-target="#panneau1">Population</button>
+							<section class="collapse p-3" id="panneau1">
+								<div class="table-responsive">
+									<table class="table table-bordered tableRound">
+										<tbody>
+										<tr>
+											<th scope="row">Total population</th>
+											<td score="row" id="popTable"></td>
+										</tr>
+										<tr>
+											<th scope="row">Median Age</th>
+											<td score="row" id="medianAgeTable"></td>
+										</tr>
+										<tr>
+											<th scope="row">Birth Rate(per 1000 pop)</th>
+											<td score="row" id="birthRateTable"></td>
+										</tr>
+										<tr>
+											<th scope="row">Death Rate(per 1000 pop)</th>
+											<td score="row" id="deathRateTable"></td>
+										</tr>
+										<tr>
+											<th scope="row">% of urban population</th>
+											<td score="row" id="urbanPopTable"></td>
+										</tr>
+										<tr>
+											<th scope="row">Sex Ratio</th>
+											<td score="row" id="sexRatioTable"></td>
+										</tr>
+										<tr>
+											<th scope="row">% of population with mobile access</th>
+											<td score="row" id="mobileAccessTable"></td>
+										</tr>
+										<tr>
+											<th scope="row">% of population with internet access</th>
+											<td score="row" id="internetAccessTable"></td>
+										</tr>
+										</tbody>
+
+									</table>
+
+									<canvas id="chartAgeStructure" ></canvas>
+								</div>
+
+
+							</section>
+							<button class = "btn btn-primary mb-1 btnColor" data-toggle="collapse" data-target="#panneauLng" id="btnLang">Languages</button>
+							<section class="collapse p-3" id="panneauLng">
+								<canvas id="chartLang" ></canvas>
+							</section>
 							<button class = "btn btn-primary mb-1 btnColor" data-toggle="collapse" data-target="#panneau3">Panneau 1</button>
 							<section class="collapse p-3" id="panneau3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quasi eveniet repellat deleniti natus quo velit, dolorum, incidunt suscipit veritatis.</section>
 							<button class = "btn btn-primary btnColor" data-toggle="collapse" data-target="#panneau4">Panneau 1</button>
@@ -135,6 +184,9 @@
 
 <script src="js/jquery-3.4.1.slim.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
+<script src = "js/palette.js"></script>
+<script src = "js/graphPlot.js"></script>
 <script src="js/basicInfoGetter.js"></script>
+
 </body>
 </html>

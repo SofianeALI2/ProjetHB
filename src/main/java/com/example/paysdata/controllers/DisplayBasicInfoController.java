@@ -31,6 +31,7 @@ public class DisplayBasicInfoController {
         List<Pays> countryList = paysServiceMysql.getByAlpha3Code(code);
 
         Pays paysToDisplay = countryList.get(0);
+        System.out.println(paysToDisplay.getLanguagesProps().size());
         return (paysToDisplay.toJson());
     }
 
