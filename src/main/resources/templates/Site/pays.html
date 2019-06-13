@@ -12,7 +12,7 @@
 	<script src = js/Chart.bundle.js></script>
 
 </head>
-<body>
+<body id="body">
 <p hidden id="AlphaCode" th:text="${code3Alpha}"></p>
 <header class="navbar navbar-expand-md customNavbar">
 	<button class="navbar-brand buttonToggleLeft">
@@ -23,14 +23,20 @@
 		<i class="fas fa-globe"></i>
 		<p class="h1">Titre du site</p>
 	</div>
+	<script src="js/addUser.js"></script>
 	<div class="ml-0 order-0">
-		<i class="fas fa-user"></i>
+
+		<button type="button" class="btn btn-success" onclick="addloyer();">
+     <span>
+     <i class="fas fa-user"></i>
+     </span>
+			</button>
 	</div>
 
 </header>
 
-<main class="container-fluid">
 
+<main class="container-fluid" id="main">
 	<div class="row mt-5">
 		<div class="col-11 rounded mb-3 ml-md-3">
 			<div class="card">
@@ -187,6 +193,6 @@
 <script src = "js/palette.js"></script>
 <script src = "js/graphPlot.js"></script>
 <script src="js/basicInfoGetter.js"></script>
-
+<script src="js/addUser.js"></script>
 </body>
 </html>

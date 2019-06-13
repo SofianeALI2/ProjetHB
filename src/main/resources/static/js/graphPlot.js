@@ -37,13 +37,13 @@ var plotFunction = function(langProp){
             },
             title:{
                 display: true,
-                text: 'Age structure'
+                text: 'Language distribution in population'
             },
             scales: {
                 yAxes: [{
                     scaleLabel: {
                         display: true,
-                        labelString: '% of each language in populationt'
+                        labelString: '% of people speaking language'
                     },
                     ticks: {
                         beginAtZero: true

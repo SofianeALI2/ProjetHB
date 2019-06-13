@@ -1,5 +1,5 @@
 
-var jsonRequestpays = function(){
+function jsonRequestpays(){
 
     var dropdown = document.getElementById('country');
     dropdown.length = 0;
@@ -11,7 +11,7 @@ var jsonRequestpays = function(){
     dropdown.selectedIndex = 5;
 
     var httpRequest = new XMLHttpRequest();
-    var url = "http://localhost:9000/chargePays";
+    var url = "http://10.11.98.112:9000/chargePays";
     httpRequest.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
@@ -29,7 +29,5 @@ var jsonRequestpays = function(){
     httpRequest.setRequestHeader('Content-Type','application/json;charset-UTF-8');
     httpRequest.send();
 }
-window.onload = function(){
-    jsonRequestpays();
-}
+
 

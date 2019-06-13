@@ -26,13 +26,26 @@
 
         <button type="button" class="btn btn-success" onclick="addloyer();">
      <span>
-         <i class="fas fa-check-circle"></i>
+     <i class="fas fa-user"></i>
      </span>
         </button>
     </div>
-
 </header>
-<a href="/createCountries" >Create a page </a>
+<div class="ml-0 order-0">
+<h2 > Connexion </h2>
+    <form action="/verifierconxadmin" method="get" name="conadmin" id="conadmin">
+    <p> Login </p> <input type="text" name="login" placeholder="login" class="form-control" >
+<p> Password </p> <input type="password" name="password" placeholder="password" class="form-control"><br><br>
 
+
+
+        <button type="submit" class="btn btn-success" >
+        <span>
+        <i class="fas fa-user"></i>
+        </span>
+        </button>
+        </form>
+        </div>
 </body>
+
 </html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="https://kit.fontawesome.com/41ed203bd1.js"></script>
+    <title>Inscruption User</title>
+</head>
+
+<body>
+<header class="navbar navbar-expand-md customNavbar">
+    <button class="navbar-brand buttonToggleLeft">
+        <i class="fas fa-bars buttonToggleLeft"></i>
+    </button>
+
+    <div class="mx-auto order-0 d-inline-flex">
+        <i class="fas fa-globe"></i>
+        <p class="h1">Titre du site</p>
+    </div>
+    <div class="ml-0 order-0">
+<form action="/utilisateur">
+ <button type="submit" class="btn btn-success" >
+     <span>
+     <i class="fas fa-user"></i>
+     </span>
+ </button>
+</form>
+    </div>
+
+</header>
+
+<main id="layer">
+<div class="big-model">
+<div class="model-content" id ="layerins">
+    <h2> Nom de Site </h2>
+
+    <p> Login </p> <input type="text" name="iden" placeholder="login" class="form-control" >
+    <p> Password </p> <input type="password" name="iden" placeholder="password" class="form-control">
+
+    <form action="" method="get">
+        <button type="submit" class="btn btn-success" >
+     <span>
+     <i class="fas fa-check-circle"></i>
+     </span>
+        </button></form>
+    <form action="addLoyerInscription()" method="get">
+        <button type="submit" class="btn btn-success" >
+     Inscription
+        </button></form>
+</div>
+</div>
+</main>
+<script src="../../static/js/jquery-3.4.1.slim.js"></script>
+<script src="../../static/js/bootstrap.bundle.min.js"></script>
+<script src="js/drapdonIndex.js"></script>
+
+</body>
+
+</html>

@@ -24,7 +24,6 @@ private PaysServiceMysql paysServiceMusql;
           //  model.addAttribute("Pays", new Pays());
 
             List<Object[]> mylist = paysServiceMusql.getAllNamePays();
-            Gson gson = new Gson();
 
             String json="[";
             for(Object[] o : mylist){
