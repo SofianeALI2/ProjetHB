@@ -1,9 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin page</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="https://kit.fontawesome.com/41ed203bd1.js"></script>
 </head>
 <body>
+<header class="navbar navbar-expand-md customNavbar">
+    <button class="navbar-brand buttonToggleLeft">
+        <i class="fas fa-bars buttonToggleLeft"></i>
+    </button>
+
+    <div class="mx-auto order-0 d-inline-flex">
+        <i class="fas fa-globe"></i>
+        <p class="h1">Titre du site</p>
+    </div>
+    <script src="js/addUser.js"></script>
+    <div class="ml-0 order-0">
+
+        <button type="button" class="btn btn-success" onclick="addloyer();">
+     <span>
+         <i class="fas fa-check-circle"></i>
+     </span>
+        </button>
+    </div>
+
+</header>
 <a href="/createCountries" >Create a page </a>
 
 </body>

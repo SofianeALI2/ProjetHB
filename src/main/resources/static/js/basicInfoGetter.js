@@ -1,3 +1,7 @@
+var introTextSetter = function(introText){
+    var textField = document.getElementById("introText");
+    textField.innerText = introText;
+}
 
 var onImgLoad = function(countryFlag){
     var imgField = document.getElementById("imgFlagId");
@@ -13,7 +17,7 @@ var onImgLoad = function(countryFlag){
 var onMapLoad = function(country){
     var imgField = document.getElementById("imgMapId");
     imgField.onload = function(e){
-        imgField.src = "https://www.cia.gov/library/publications/the-world-factbook/attachments/maps/"+country.alpha2Code+"-map.gif";
+        imgField.src = "https://www.cia.gov/library/publications/the-world-factbook/attachments/maps/"+country.ciaCode.toUpperCase()+"-map.gif";
     };
 
     if(imgField.complete) {
@@ -45,6 +49,7 @@ var jsonRequest = function(code3Alpha){
             console.log(this.responseText);
             var country = eval('('+this.responseText+')');
             console.dir(country);
+            introTextSetter(country.introText);
             onImgLoad(country.flag);
             setTableElement(country);
             onMapLoad(country);

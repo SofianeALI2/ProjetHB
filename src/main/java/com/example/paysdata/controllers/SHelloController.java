@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/")
@@ -17,10 +18,10 @@ public class SHelloController {
         map.put("code3Alpha" , code3Alpha);
         return "Site/pays";
     }
+
     @GetMapping("/index")
-    public String indexx() {
+    public String index(HttpServletRequest request , ModelMap map) {
 
         return "Site/index";
     }
-
 }

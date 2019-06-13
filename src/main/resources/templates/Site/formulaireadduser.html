@@ -24,7 +24,7 @@
         <p class="h1">Titre du site</p>
     </div>
     <div class="ml-0 order-0">
-<form action="la">
+<form action="/utilisateur">
  <button type="submit" class="btn btn-success" >
      <span>
      <i class="fas fa-user"></i>
@@ -38,11 +38,21 @@
 <main id="layer">
 <div class="big-model">
 <div class="model-content" id ="layerins">
+    <h2> Nom de Site </h2>
 
-    <input type="text" name="iden" placeholder="name" class="form-control" > </input>
-    <input type="password" name="iden" placeholder="password" class="form-control"> </input>
-    <input type="email" name="iden" placeholder="email" class="form-control" > </input>
+    <p> Login </p> <input type="text" name="iden" placeholder="login" class="form-control" >
+    <p> Password </p> <input type="password" name="iden" placeholder="password" class="form-control">
 
+    <form action="" method="get">
+        <button type="submit" class="btn btn-success" >
+     <span>
+     <i class="fas fa-check-circle"></i>
+     </span>
+        </button></form>
+    <form action="addLoyerInscription()" method="get">
+        <button type="submit" class="btn btn-success" >
+     Inscription
+        </button></form>
 </div>
 </div>
 </main>

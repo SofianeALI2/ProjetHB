@@ -21,8 +21,16 @@
         <i class="fas fa-globe"></i>
         <p class="h1">Titre du site</p>
     </div>
+    <script src="js/addUser.js">
+
+    </script>
+    <p name="session" id="session">  </p>
     <div class="ml-0 order-0">
-        <i class="fas fa-user"></i>
+        <button type="button" class="btn btn-success" onclick="addloyer();">
+     <span>
+     <i class="fas fa-user"></i>
+     </span>
+        </button>
     </div>
 
 </header>
@@ -42,8 +50,11 @@
 
                     </select>
                     <div class="input-group-append">
-                        <button type="submit" class="btn btn-success"><span>
-                 <i class="fas fa-check"></i> </span></button>
+                        <button type="submit" class="btn btn-success" id="ok" >
+                            <span>
+                            <i class="fas fa-check"></i>
+                            </span>
+                        </button>
                     </div>
                 </div>
             </form>
@@ -87,10 +98,13 @@
     </div>
 
 </main>
-
-<script src="../../static/js/jquery-3.4.1.slim.js"></script>
-<script src="../../static/js/bootstrap.bundle.min.js"></script>
-<script src="js/drapdonIndex.js"></script>
-
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/drapdonIndex.js"></script>
+    <script src="./js/addUser.js"></script>
+<script>
+    verifierSession();
+    jsonRequestpays();
+</script>
 </body>
 </html>
