@@ -24,7 +24,7 @@
     <script src="js/addUser.js">
 
     </script>
-    <p name="session" id="session">  </p>
+    <p name="session" id="session" class="ml-1 designeText">  </p>
     <div class="ml-0 order-0">
         <button type="button" class="btn btn-success" onclick="addloyer();">
      <span>
@@ -45,10 +45,22 @@
         <div class="col-8 offset-1 col-md-7 offset-md-2 col-lg-5 offset-lg-4 form-group text-center">
             <label for="country">Pays choisi</label>
             <form id="display" action="/Pays" method="get" name="display">
+
+                <div class="input-group shadowForForm ">
+                    <select name="region" id="region" class="form-control" onclick="jsonRequestSubRegion();">
+
+                    </select>
+
+                    <select name="sousregion" id="subregion" class="form-control" onclick="jsonRequestPaysFromSubegion();">
+                        <option>--Choisissez votre subregion--</option>
+                    </select>
+                </div>
+
                 <div class="input-group shadowForForm">
                     <select name="country" id="country" class="form-control">
 
                     </select>
+
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-success" id="ok" >
                             <span>
@@ -104,6 +116,7 @@
     <script src="./js/addUser.js"></script>
 <script>
     verifierSession();
+    jsonRequestregion();
     jsonRequestpays();
 </script>
 

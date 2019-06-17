@@ -30,7 +30,7 @@ public class UserServicemysql {
         this.userDaoCrudRepo.deleteById( id);
     }
 
-    public User getUserByEmail(String email){
+    public List<User> getUserByEmail(String email){
         return this.userDaoCrudRepo.findByEmail(email);
     }
 

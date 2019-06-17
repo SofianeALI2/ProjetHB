@@ -28,11 +28,6 @@ public class UserController {
         String password=request.getParameter("password");
         String email=request.getParameter("email");
 
-
-        if (userServicemysql.getUserByEmail(email)!=null)
-            //affichage cette email a utiliser deja
-        {int a =10;}
-        else{
             //creation de session
             session.invalidate();
           HttpSession newsession= request.getSession(true);
@@ -43,7 +38,7 @@ public class UserController {
                     ""+forename);
             userServicemysql.updateUser(new User( name, forename, login, password, email));
 
-        }
+
         response.sendRedirect("/index");
     }
 
@@ -93,15 +88,43 @@ public class UserController {
         @RequestMapping( method = RequestMethod.GET , value = "/verifierSession", produces = MediaType.APPLICATION_JSON_VALUE)
         public String verifierSession(HttpServletRequest request, HttpSession session) {
             String json="";
-            if (!session.isNew()) {
+
             String email=(String) session.getAttribute("email");
             String login=(String)session.getAttribute("login");
             String nomprenom=(String)session.getAttribute("nomPrenom");
                 json="{\"nomPrenom\":\""+ nomprenom +
                     "\",\"login\":\""+ login +
                     "\",\"email\":\""+email+"\"}";
-            }
+
             return json;
         }
+    @CrossOrigin
+    @RequestMapping(value = "/verifierEmail/{email}", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getJsonFromEmail(@PathVariable("email") String email) {
+
+        List<User> listuser = userServicemysql.getUserByEmail(email);
+        if(listuser.size()>0)
+            return (listuser.get(0).toJson());
+        else
+            return  "{\"nomPrenom\":\""+ null +
+                    "\",\"login\":\""+ null +
+                    "\",\"email\":\""+null+"\"}";
 
     }
+
+    @CrossOrigin
+    @RequestMapping(value = "/verifierLogin/{login}", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getJsonFromLogin(@PathVariable("login") String login) {
+
+
+          List<User> listuser = userServicemysql.getUserByLogin(login);
+          if(listuser.size()>0)
+                     return (listuser.get(0).toJson());
+          else
+              return  "{\"nomPrenom\":\""+ null +
+                      "\",\"login\":\""+ null +
+                      "\",\"email\":\""+null+"\"}";
+
+    }
+}
+

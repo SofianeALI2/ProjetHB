@@ -52,7 +52,7 @@ var setTableElement = function(country){
 
 var jsonRequest = function(code3Alpha){
     var httpRequest = new XMLHttpRequest();
-    var url = "http://10.11.98.112:9000/displayBasicInfo/"+code3Alpha;
+    var url = "http://localhost:9000/displayBasicInfo/"+code3Alpha;
     httpRequest.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);

@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface UserDaoCrudRepo extends CrudRepository<User, Integer> {
-    User findByEmail(String email);
+    List<User> findByEmail(String email);
     List<User> findByLogin( String login);
 
 }
