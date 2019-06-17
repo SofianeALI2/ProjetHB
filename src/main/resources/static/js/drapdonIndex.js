@@ -93,7 +93,9 @@ function jsonRequestSubRegion(){
 
         ////////////////////
         jsonRequestPaysFromRegion(region.value);
-}
+}else{
+        jsonRequestpays();
+    }
 }
 
 function jsonRequestPaysFromRegion(region){

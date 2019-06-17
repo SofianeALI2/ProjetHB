@@ -43,14 +43,18 @@ function loyerConnexion() {
     if (btn != null) {
         btn.style.visibility = "hidden";
     }
-    var html = '<div class="big-model mx-auto  container-fluid  " id="connexion" required>\n' +
-        '<div class="model-content-con mx-auto container-fluid col-12" id ="layerins" required>\n' +
-        '    <h2> Nom de Site </h2>\n' +
-        '    <form action="/connexion" method="post" class="reglageForme">\n' +
-        '    <p> Login </p> <input type="text" name="login" placeholder="login" class="form-control" required >\n' +
+    var html = '<div class="big-model mx-auto  container-fluid  " id="connexion" >\n' +
+        '<div class="model-content-con mx-auto container-fluid col-12" id ="layerins" >\n' +
+        ' <div class="container-fluid"> ' +
+        '<form action="/conadmin" method="get">' +
+        '<button type="submit" class="btn btn-success">Admin </button></form>' +
+        '  <h2> World Countries Data </h2>\n' +
+        '</div>  ' +
+        '  <form action="/connexion" method="post" class="reglageForme" id="forme">\n' +
+        '    <p> Login </p> <input type="text" name="login" placeholder="login" class="form-control" id="login" required >\n' +
         '    <p> Password </p> <input type="password" name="password" ' +
-        'placeholder="password" class="form-control" required><br><br>\n' +
-        '        <button type="submit" class="btn btn-success" >\n' +
+        'placeholder="password" class="form-control" id="password" required><br><br>\n' +
+        '        <button type="button" class="btn btn-success" onclick="verifierUserConection()" >\n' +
         '     <span>\n' +
         '     <i class="fas fa-check-circle"></i>\n' +
         '     </span>\n' +
@@ -170,6 +174,32 @@ function verifierLogin(login) {
 
 }
 
+function verifierPassword(password,login) {
+    var httpRequest = new XMLHttpRequest();
+    var url = "http://localhost:9000/verifierPassword/" +password+"/"+login;
+    return new Promise(function (resolve, reject) {
+        httpRequest.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status !== 200) {
+                reject('error serrver');
+            }
+            if (this.readyState == 4 && this.status == 200) {
+                try {
+                    var respJSON = JSON.parse(this.responseText);
+                    console.log("password");
+                    console.log(respJSON);
+                } catch (e) {
+                    console.log(e);
+                    reject("invalide Json");
+                }
+                resolve(respJSON.password === password);
+            }
+        };
+        httpRequest.open("GET", url, true);
+        httpRequest.setRequestHeader('Content-Type', 'application/json;charset-UTF-8');
+        httpRequest.send();
+    });
+
+}
 function verifierCompte() {
     var login = document.getElementById("login");
     var email = document.getElementById("email");
@@ -200,6 +230,33 @@ function verifierCompte() {
 
 }
 
-function affichecompmail() {
-    console.log(compemail);
+
+function verifierUserConection() {
+    var login = document.getElementById("login");
+    var password = document.getElementById("password");
+    var forme=document.getElementById("forme");
+
+    console.log(verifierLogin(login.value));
+    console.log(verifierPassword(password.value));
+
+    verifierLogin(login.value).then(function (veriflogin) {
+        console.log("verifieremail result");
+        console.log("veriflogin", veriflogin)
+        if (veriflogin === false) {
+            alert('Email incorrect')
+        } else {
+            verifierPassword(password.value,login.value).then(function onLoginResult(verifpassword) {
+                    if (verifpassword === false) {
+                        alert('Password incorrect');
+                    } else {
+                        forme.submit();
+                    }
+                }
+            )
+        }
+    }).catch(function onError(error) {
+        console.log(error)
+    });
+
+
 }
