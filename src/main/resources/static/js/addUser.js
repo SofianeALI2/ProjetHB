@@ -75,13 +75,14 @@ function addLoyerInscription() {
     con.style.visibility = "hidden";
     var html = '<div class="big-model mx-auto container-fluid ">\n' +
         '<div class="model-content-insc mx-auto container-fluid col-12" id ="layerins" >\n' +
-        '<form action="/utilisateur" method="get" name="formAddUser" id="formeIns">\n' +
+
+        '<form action="/utilisateur" method="get" name="formAddUser" id="formeCon">\n' +
         '    <h2> Add user </h2>\n' +
         '    <p> Name </p> <input type="text" name="name" placeholder="name" class="form-control"  required >\n' +
         '    <p> Forname </p> <input type="text" name="forename" placeholder="forename" class="form-control"  required>\n' +
-        '    <p> Login </p> <input type="text" name="login" placeholder="login" class="form-control"  id="loginIns" required>\n' +
+        '    <p> Login </p> <input type="text" name="login" placeholder="login" class="form-control"  id="loginc" required>\n' +
         '    <p> Password </p> <input type="password" name="password" placeholder="password" class="form-control" required>\n' +
-        '    <p> Email</p> <input type="email" name="email" placeholder="email" class="form-control" id="emailIns" required>\n' +
+        '    <p> Email</p> <input type="email" name="email" placeholder="email" class="form-control" id="email" required>\n' +
         '        <button type="button" class="btn btn-success" onclick="verifierCompte()">\n' +
         '     <span>\n' +
         '     <i class="fas fa-user-plus"></i>\n' +
@@ -148,6 +149,7 @@ function verifieremail(email) {
 }
 
 function verifierLogin(login) {
+    console.log(login);
     var httpRequest = new XMLHttpRequest();
     var url = "http://localhost:9000/verifierLogin/" + login;
     return new Promise(function (resolve, reject) {
@@ -201,10 +203,10 @@ function verifierPassword(password,login) {
 
 }
 function verifierCompte() {
-    var login = document.getElementById("loginIns");
-    var email = document.getElementById("emailIns");
-   console.log("on Get les element BY I") ;
-   console.dir(login);
+
+    var login = document.getElementById("loginc");
+    var email = document.getElementById("email");
+    var forme = document.getElementById("formeCon");
 
     console.log(verifierLogin(login.value));
     console.log(verifieremail(email.value));

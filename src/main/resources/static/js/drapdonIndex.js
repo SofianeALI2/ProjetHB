@@ -132,19 +132,19 @@ function jsonRequestPaysFromRegion(region){
 }
 
 function jsonRequestPaysFromSubegion(){
-
+    var region=document.getElementById('region');
     var subregion = document.getElementById('subregion');
     var dropdown = document.getElementById('country');
     dropdown.length =0;
 
-    console.log(region);
-
+    console.log(region.value);
+    console.log(subregion.value);
     var defaultOption = document.createElement('option');
     defaultOption.text = '--Choisissez votre pays--';
 
     dropdown.add(defaultOption);
     dropdown.selectedIndex =0;
-if(subregion.value!="'--Choisissez votre subregion--'"){
+if(subregion.value!="--Choisissez votre subregion--"){
     var httpRequestpays = new XMLHttpRequest();
     var url = "http://localhost:9000/chargePaysFromSubRegion/"+subregion.value;
     httpRequestpays.onreadystatechange = function () {
@@ -163,6 +163,12 @@ if(subregion.value!="'--Choisissez votre subregion--'"){
     httpRequestpays.open("GET", url, true);
     httpRequestpays.setRequestHeader('Content-Type', 'application/json;charset-UTF-8');
     httpRequestpays.send();
+}else{
+    jsonRequestPaysFromRegion(region.value);
 }
+if((subregion.value==="--Choisissez votre subregion--")&&(region.value==="--Choisissez votre region--")){
+    jsonRequestpays();
+}
+
 }
 
