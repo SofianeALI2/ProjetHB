@@ -60,11 +60,37 @@ public class CreateCountriesController {
             else {
                 pays = setCIADataName(pays);
                 pays = setCIaInfo(pays,CIAJson);
+               // String ImfJsonPays = ImfToJson(pays);
+                //pays = setImfTimeSeries(pays,ImfJsonPays);
                 //Ajouter pays dans la DataBase
                 paysServiceMysql.insertPays(pays);
             }
         }
         return null;
+    }
+
+
+    private String ImfToJson(Pays pays){
+        String Alpha3Code = pays.getAlpha3Code();
+        String timeSeriesCode = "PPPGDP";
+        String url = "https://www.quandl.com/api/v3/datasets/ODA/"+Alpha3Code+"_"+timeSeriesCode+"?api_key=PxcLdVjhDJLuagmbkCAQ";
+        String str ="";
+        String jsonResult = "";
+        try {
+            URL url_json = new URL("");
+            BufferedReader br = new BufferedReader(new InputStreamReader(url_json.openStream()));
+            while (null != (str = br.readLine())) {
+                jsonResult += str;
+            }
+        } catch (Exception ex) {
+        }
+        return jsonResult;
+    }
+    private Pays setImfTimeSeries(Pays pays , String json) {
+        JSONObject imfJsonObject = new JSONObject(json);
+        return null;
+
+
     }
 
     private Pays setCIaInfo(Pays pays, JSONObject ciaJson) {
@@ -236,8 +262,10 @@ public class CreateCountriesController {
         }
 
         try{
-            pays.setGdpPPP(countryInfoEco.getJSONObject("gdp").getJSONObject("purchasing_power_parity").getJSONArray("annual_values").getDouble(0));
+            pays.setGdpPPP(countryInfoEco.getJSONObject("gdp").getJSONObject("purchasing_power_parity").getJSONArray("annual_values").getJSONObject(0).getDouble("value"));
         }catch (JSONException e) {
+            System.out.println("Country + " +paysName + "--- ERROR GDP");
+            e.printStackTrace();
             pays.setGdpPPP(0);
         }
         try{

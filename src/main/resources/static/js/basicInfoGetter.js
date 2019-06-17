@@ -47,6 +47,25 @@ var setTableElement = function(country){
     document.getElementById('mobileAccessTable').innerHTML = country.mobileAccess;
     document.getElementById('internetAccessTable').innerHTML = country.internetAccess;
 
+    //----------------- For Government ---------------------------------------
+    document.getElementById('chiefTable').innerHTML = country.chiefOfState;
+    document.getElementById('govtHeadTable').innerHTML = country.govtHead;
+    document.getElementById('govtTypeTable').innerHTML = country.govtType;
+    document.getElementById('govtElectTable').innerHTML = country.govtElect;
+
+    //-----------------Social and Health------------------------------------------
+    document.getElementById('infantTable').innerHTML = country.infantMortalityRate;
+    document.getElementById('lifeExpectancyTable').innerHTML = country.lifeExpectancyAtBirth;
+    document.getElementById('healthExpenditureTable').innerHTML = country.heatlthExpenditure;
+    document.getElementById('eduExpenditureTable').innerHTML = country.educationExpenditure;
+    document.getElementById('literacyTable').innerHTML = country.literacy;
+    document.getElementById('adultObesityTable').innerHTML = country.adultObesity;
+    //------------------Economic---------------------------------------------------
+    document.getElementById('gdpTable').innerHTML = country.gdpPPP;
+    document.getElementById('laborForceTable').innerHTML = country.totalLaborForce;
+    document.getElementById('publicDebtTable').innerHTML = country.publicDebt;
+    document.getElementById('unemploymentTable').innerHTML = country.unemployment;
+    document.getElementById('inflationTable').innerHTML = country.inflation;
 }
 
 
@@ -64,6 +83,7 @@ var jsonRequest = function(code3Alpha){
             onMapLoad(country);
             plotLanguageProp(country.languagesProps);
             ageStructures(country);
+            plotGdpSector(country.gdpBySector);
 
         }
     };
@@ -74,12 +94,12 @@ var jsonRequest = function(code3Alpha){
 
 var plotLanguageProp = function(langProp){
     if(langProp.length ==  0){
-        document.getElementById("panneauLng").style.display = "none";
-        document.getElementById("btnLang").style.display = "none";
     }
     else{
-        document.getElementById("panneauLng").style.display = "block";
-        document.getElementById("btnLang").style.display = "block";
+       // document.getElementById("panneauLng").style.h = "block";
+        document.getElementById("panneauLng").hidden = false;
+        document.getElementById("btnLang").hidden = false;
+        //document.getElementById("btnLang").style.display = "block";
         plotFunction(langProp);
     }
 }

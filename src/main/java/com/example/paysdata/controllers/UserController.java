@@ -93,14 +93,14 @@ public class UserController {
         @RequestMapping( method = RequestMethod.GET , value = "/verifierSession", produces = MediaType.APPLICATION_JSON_VALUE)
         public String verifierSession(HttpServletRequest request, HttpSession session) {
             String json="";
-            if (!session.isNew()) {
+           // if (!session.isNew()) {
             String email=(String) session.getAttribute("email");
             String login=(String)session.getAttribute("login");
             String nomprenom=(String)session.getAttribute("nomPrenom");
                 json="{\"nomPrenom\":\""+ nomprenom +
                     "\",\"login\":\""+ login +
                     "\",\"email\":\""+email+"\"}";
-            }
+            //}
             return json;
         }
 
