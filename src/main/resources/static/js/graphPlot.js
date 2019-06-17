@@ -32,6 +32,7 @@ var plotFunction = function(langProp){
             }]
         },
         options: {
+            maintainAspectRatio : false,
             legend: {
                 display: false
             },
@@ -51,6 +52,36 @@ var plotFunction = function(langProp){
                 }]
             }
         }
+    });
+}
+
+var plotGdpSector = function(gdpBySector){
+    var ctx = document.getElementById("chartGDPSector");
+    var ndata = 3;
+    var seq = palette("rainbow" , ndata);
+    var colorList = seq.map(function(hex){return '#'+hex;});
+
+    var myPieChart = new Chart(ctx, {
+        type: 'pie',
+        data : {
+            datasets: [{
+                data: [gdpBySector.agriculture,gdpBySector.industry,gdpBySector.services],
+                backgroundColor : colorList
+            }],
+
+            // These labels appear in the legend and in the tooltips when hovering different arcs
+            labels:['Agriculture (% of GDP)','Industry (% of GDP)','Services (% of GDP)']
+
+
+        },
+
+        options:{
+            maintainAspectRatio : false,
+            title:{
+                display: true,
+                text: 'GDP composition by sector in %'
+            }}
+
     });
 }
 
@@ -74,7 +105,9 @@ var ageStructures = function(country){
 
         },
 
-        options:{title:{
+        options:{
+            maintainAspectRatio : false,
+            title:{
                 display: true,
                 text: '% of people in age braket'
             }}

@@ -131,3 +131,11 @@ body{
 .form-control{
 	width: 20vw;
 }
+
+.chart-container {
+	/*position: relative;*/
+	margin-bottom: 2vh;
+	height: 45vh;
+	/*0width: 55vw;*/
+}
+

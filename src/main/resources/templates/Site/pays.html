@@ -38,7 +38,7 @@
 
 <main class="container-fluid" id="main">
 	<div class="row mt-5">
-		<div class="col-11 rounded mb-3 ml-md-3">
+		<div class="col-12 rounded mb-3">
 			<div class="card">
 				<div class="card-header shadowForBoxHeader border-0">NOM DU PAYS</div>
 				<div class = "card-body row table-primary shadowForBox  border-0 ml-0 mr-0">
@@ -89,7 +89,7 @@
 
 	</div>
 	<div class="row mt-3">
-		<div class="col-11 rounded mb-3 ml-md-3">
+		<div class="col-12 rounded mb-3">
 			<div class="card">
 				<div class="card-header shadowForBoxHeader border-0">NOM DU PAYS</div>
 				<div class = "row card-body table-primary shadowForBox ml-0 mr-0">
@@ -122,7 +122,8 @@
 					<div class="col-11 col-md-8">
 						<div class="d-flex flex-column" id="accordeon">
 							<button class = "btn btn-primary mb-1 btnColor" data-toggle="collapse" data-target="#panneau1">Population</button>
-							<section class="collapse p-3" id="panneau1">
+							<section class="collapse pt-3 pl-0 container-fluid" id="panneau1">
+
 								<div class="table-responsive">
 									<table class="table table-bordered tableRound">
 										<tbody>
@@ -161,20 +162,114 @@
 										</tbody>
 
 									</table>
-
-									<canvas id="chartAgeStructure" ></canvas>
+								</div>
+								<div class="chart-container" >
+										<canvas id="chartAgeStructure"></canvas>
 								</div>
 
 
+
 							</section>
-							<button class = "btn btn-primary mb-1 btnColor" data-toggle="collapse" data-target="#panneauLng" id="btnLang">Languages</button>
-							<section class="collapse p-3" id="panneauLng">
-								<canvas id="chartLang" ></canvas>
+							<button hidden = "true" class = "btn btn-primary mb-1 btnColor" data-toggle="collapse" data-target="#panneauLng" id="btnLang">Languages</button>
+							<section hidden = "true" class="collapse pt-3 pl-0" id="panneauLng">
+								<div class="chart-container">
+									<canvas id="chartLang" ></canvas>
+								</div>
+
 							</section>
-							<button class = "btn btn-primary mb-1 btnColor" data-toggle="collapse" data-target="#panneau3">Panneau 1</button>
-							<section class="collapse p-3" id="panneau3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quasi eveniet repellat deleniti natus quo velit, dolorum, incidunt suscipit veritatis.</section>
-							<button class = "btn btn-primary btnColor" data-toggle="collapse" data-target="#panneau4">Panneau 1</button>
-							<section class="collapse p-3" id="panneau4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quasi eveniet repellat deleniti natus quo velit, dolorum, incidunt suscipit veritatis.</section>
+							<button class = "btn btn-primary mb-1 btnColor" data-toggle="collapse" data-target="#panneau3">Government</button>
+							<section class="collapse pt-3 pl-0" id="panneau3">								<div class="table-responsive">
+								<table class="table table-bordered tableRound">
+									<tbody>
+									<tr>
+										<th scope="row">Chief of State</th>
+										<td score="row" id="chiefTable"></td>
+									</tr>
+									<tr>
+										<th scope="row">Government head</th>
+										<td score="row" id="govtHeadTable"></td>
+									</tr>
+									<tr>
+										<th scope="row">Government type</th>
+										<td score="row" id="govtTypeTable"></td>
+									</tr>
+									<tr>
+										<th scope="row">Government Election</th>
+										<td score="row" id="govtElectTable"></td>
+									</tr>
+									</tbody>
+
+								</table>
+							</div>
+							</section>
+							<button class = "btn btn-primary mb-1  btnColor" data-toggle="collapse" data-target="#panneau4">Social & Heatlh Informations</button>
+							<section class="collapse pt-3 pl-0" id="panneau4">
+								<table class="table table-bordered tableRound">
+									<tbody>
+									<tr>
+										<th scope="row">Infant mortality rate</th>
+										<td score="row" id="infantTable"></td>
+									</tr>
+									<tr>
+										<th scope="row">Life Expectancy at birth</th>
+										<td score="row" id="lifeExpectancyTable"></td>
+									</tr>
+									<tr>
+										<th scope="row">Health Expenditure (% of GDP)</th>
+										<td score="row" id="healthExpenditureTable"></td>
+									</tr>
+									<tr>
+										<th scope="row">Education Expenditure (% of GDP)</th>
+										<td score="row" id="eduExpenditureTable"></td>
+									</tr>
+									<tr>
+										<th scope="row">Literacy</th>
+										<td score="row" id="literacyTable"></td>
+									</tr>
+									<tr>
+										<th scope="row">Adult Obesity</th>
+										<td score="row" id="adultObesityTable"></td>
+									</tr>
+									</tbody>
+
+								</table>
+
+
+
+
+							</section>
+							<button class = "btn btn-primary btnColor" data-toggle="collapse" data-target="#panneau5">Economic Information</button>
+							<section class="collapse pt-3 pl-0" id="panneau5">
+								<table class="table table-bordered tableRound">
+									<tbody>
+									<tr>
+										<th scope="row">GDP (purchasing power parity)</th>
+										<td score="row" id="gdpTable"></td>
+									</tr>
+									<tr>
+										<th scope="row">Total Labor Force</th>
+										<td score="row" id="laborForceTable"></td>
+									</tr>
+									<tr>
+										<th scope="row">Public Debt (% of GDP)</th>
+										<td score="row" id="publicDebtTable"></td>
+									</tr>
+									<tr>
+										<th scope="row">Unemployment (% of Total Labor Force)</th>
+										<td score="row" id="unemploymentTable"></td>
+									</tr>
+									<tr>
+										<th scope="row">Inflation (% of Inflation)</th>
+										<td score="row" id="inflationTable"></td>
+									</tr>
+									</tbody>
+
+								</table>
+
+                                <div class="chart-container" >
+                                    <canvas id="chartGDPSector"></canvas>
+                                </div>
+							</section>
 
 
 						</div>
