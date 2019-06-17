@@ -30,8 +30,12 @@ public class UserServicemysql {
         this.userDaoCrudRepo.deleteById( id);
     }
 
-    public User getUserByEmail(String email){
+    public List<User> getUserByEmail(String email){
         return this.userDaoCrudRepo.findByEmail(email);
+    }
+
+    public List<User> getUserByLoginAndPassword(String login, String password) {
+    return this.userDaoCrudRepo.findByLoginAndPassword(login,password);
     }
 
     public List<User> getUserByLogin (String login){
@@ -46,4 +50,6 @@ public class UserServicemysql {
         this.userDaoCrudRepo.save(user);
         return user;
     }
+
+
 }

@@ -22,10 +22,14 @@ public class PaysServiceMysql {
     public List<Object[]> getAllNamePays(){
         return this.paysDao.findAllNameAlphacode();
     }
-
+    public List<Object[]>getAllRegion(){return this.paysDao.findAllRegion();}
+    public List<Object[]> getAllSubRegion(String region) {return this.paysDao.getAllSubRegion(region); }
+    public List<Object[]> getAllPaysFromRegion(String region) { return this.paysDao.getAllPaysFromRegion(region);}
+    public List<Object[]> getAllPaysFromSubregion(String subregion) {return this.paysDao.getAllPaysFromSubegion(subregion); }
     public Optional<Pays> getPaysById(int id){
         return this.paysDao.findById( id);
     }
+
 
 
     public void removePaysById(int id) {

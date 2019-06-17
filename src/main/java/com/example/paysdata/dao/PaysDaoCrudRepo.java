@@ -14,8 +14,17 @@ public interface PaysDaoCrudRepo extends CrudRepository<Pays, Integer> {
 
     @Query("Select p.name ,p.alpha2Code ,p.alpha3Code from Pays as p ")
     List<Object[]> findAllNameAlphacode();
+    @Query("Select p.name ,p.alpha2Code,p.alpha3Code from Pays as p where p.region = ?1")
+    List<Object[]> getAllPaysFromRegion(String region);
+    @Query("Select p.name ,p.alpha2Code,p.alpha3Code from Pays as p where p.subregion = ?1")
+    List<Object[]> getAllPaysFromSubegion(String subregion);
 
     /* Fonction pour effectuer la jointure des données RESTCountries et CIA */
     @Query("Select p.name ,p.capital ,p.alpha2Code, p.alpha3Code from Pays as p ")
     List<Object[]> findAllNameCapitalAlpha2Alpha3();
+    @Query("Select distinct p.region from Pays as p ")
+    List<Object[]> findAllRegion();
+    @Query("Select distinct p.subregion from Pays as p where p.region = ?1")
+    List<Object[]> getAllSubRegion(String region);
+
 }
