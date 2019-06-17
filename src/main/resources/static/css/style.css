@@ -28,6 +28,8 @@ body{
 	/*box-shadow: 1px 1px 1px 1px #000;*/
 	/*background-color:#9bdbff;*/
 	background-color: #fdb129;
+	color:white;
+
 }
 .shadowForForm{
 	box-shadow: 0px 0px 6px 1px #013;
@@ -152,3 +154,4 @@ body{
 .nomDuPays{
 	color:white;
 }
+

@@ -75,13 +75,13 @@ function addLoyerInscription() {
     con.style.visibility = "hidden";
     var html = '<div class="big-model mx-auto container-fluid ">\n' +
         '<div class="model-content-insc mx-auto container-fluid col-12" id ="layerins" >\n' +
-        '<form action="/utilisateur" method="get" name="formAddUser" id="forme">\n' +
+        '<form action="/utilisateur" method="get" name="formAddUser" id="formeIns">\n' +
         '    <h2> Add user </h2>\n' +
         '    <p> Name </p> <input type="text" name="name" placeholder="name" class="form-control"  required >\n' +
         '    <p> Forname </p> <input type="text" name="forename" placeholder="forename" class="form-control"  required>\n' +
-        '    <p> Login </p> <input type="text" name="login" placeholder="login" class="form-control"  id="login" required>\n' +
+        '    <p> Login </p> <input type="text" name="login" placeholder="login" class="form-control"  id="loginIns" required>\n' +
         '    <p> Password </p> <input type="password" name="password" placeholder="password" class="form-control" required>\n' +
-        '    <p> Email</p> <input type="email" name="email" placeholder="email" class="form-control" id="email" required>\n' +
+        '    <p> Email</p> <input type="email" name="email" placeholder="email" class="form-control" id="emailIns" required>\n' +
         '        <button type="button" class="btn btn-success" onclick="verifierCompte()">\n' +
         '     <span>\n' +
         '     <i class="fas fa-user-plus"></i>\n' +
@@ -201,9 +201,10 @@ function verifierPassword(password,login) {
 
 }
 function verifierCompte() {
-    var login = document.getElementById("login");
-    var email = document.getElementById("email");
-    var forme = document.getElementById("forme");
+    var login = document.getElementById("loginIns");
+    var email = document.getElementById("emailIns");
+   console.log("on Get les element BY I") ;
+   console.dir(login);
 
     console.log(verifierLogin(login.value));
     console.log(verifieremail(email.value));
