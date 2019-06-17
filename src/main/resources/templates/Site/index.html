@@ -18,8 +18,10 @@
     </button>
 
     <div class="mx-auto order-0 d-inline-flex">
-        <i class="fas fa-globe"></i>
-        <p class="h1">Titre du site</p>
+        <div class="row">
+            <p class="h2">		<i class="fas fa-globe"></i>
+                World Countries Data</p>
+        </div>
     </div>
     <script src="js/addUser.js">
 
@@ -37,12 +39,12 @@
 
 <main class="container-fluid">
     <div class="row mt-5">
-        <div class="col-8 offset-1 col-md-6 offset-md-4 ">
+        <div class="mx-auto ">
             <h1 class="h2 align-items-center">Selectionner un pays pour accéder à la page</h1>
         </div>
     </div>
     <div class="row mt-5">
-        <div class="col-8 offset-1 col-md-7 offset-md-2 col-lg-5 offset-lg-4 form-group text-center">
+        <div class="mx-auto form-group text-center">
             <label for="country">Pays choisi</label>
             <form id="display" action="/Pays" method="get" name="display">
                 <div class="input-group shadowForForm">

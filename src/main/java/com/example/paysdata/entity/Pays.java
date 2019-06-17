@@ -88,6 +88,7 @@ public class Pays {
     private double publicDebt;
     private double unemployment;
     private double inflation;
+    private String anthemURL;
 
 
 
@@ -169,6 +170,13 @@ public class Pays {
     }
 
 
+    public String getAnthemURL() {
+        return anthemURL;
+    }
+
+    public void setAnthemURL(String anthemURL) {
+        this.anthemURL = anthemURL;
+    }
 
     public double getFifteen24() {
         return fifteen24;

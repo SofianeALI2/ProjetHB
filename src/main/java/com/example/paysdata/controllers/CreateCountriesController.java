@@ -223,6 +223,13 @@ public class CreateCountriesController {
             System.out.println("country For gouv + " + paysName);
         }
 
+        try{
+            String anthem = countryInfoGovt.getJSONObject("national_anthem").getString("audio_url");
+            pays.setAnthemURL(anthem);
+        }catch(JSONException e){
+            pays.setAnthemURL("");
+        }
+
         //Socio-economic indicators & data
 
         try {
@@ -311,6 +318,8 @@ public class CreateCountriesController {
         }catch(JSONException e){
             pays.setInflation(0);
         }
+
+
 
 
         pays.setIntroText(textIntro);

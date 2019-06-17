@@ -67,7 +67,16 @@ var setTableElement = function(country){
     document.getElementById('unemploymentTable').innerHTML = country.unemployment;
     document.getElementById('inflationTable').innerHTML = country.inflation;
 }
-
+var setCountryName=function(name){
+    var countryName = document.getElementsByClassName("nomDuPays");
+    for(var i = 0 ;i< countryName.length ;i++){
+        countryName[i].innerHTML = name;
+    }
+}
+var anthem=function(anthem){
+    var audio = document.getElementById("anthem");
+    audio.src = anthem;
+}
 
 var jsonRequest = function(code3Alpha){
     var httpRequest = new XMLHttpRequest();
@@ -84,6 +93,8 @@ var jsonRequest = function(code3Alpha){
             plotLanguageProp(country.languagesProps);
             ageStructures(country);
             plotGdpSector(country.gdpBySector);
+            anthem(country.anthemURL);
+            setCountryName(country.name);
 
         }
     };
@@ -113,9 +124,34 @@ var test = function(lng){
     console.dir(lng);
 
 }
+
+
+star.onclick = function( isClicked){
+    console.dir(this);
+    console.dir(isClicked);
+    if(this.isClicked === false){
+        this.classList.remove("far");
+        this.classList.remove("fa-star");
+        this.classList.add("fas");
+        this.classList.add("fa-star")
+        this.isClicked = true;
+    }
+    else{
+        console.log("enter here");
+        this.classList.remove("fas");
+        this.classList.remove("fa-star");
+        this.classList.add("far");
+        this.classList.add("fa-star");
+        this.isClicked=false;
+    }
+
+}
+
 window.onload = function(){
     var code3Alpha = document.getElementById("AlphaCode").innerHTML;
     jsonRequest(code3Alpha);
+    var star = document.getElementById("star");
+    star.isClicked = false;
 
 }
 

@@ -20,8 +20,10 @@
 	</button>
 
 	<div class="mx-auto order-0 d-inline-flex">
-		<i class="fas fa-globe"></i>
-		<p class="h1">Titre du site</p>
+        <div class="row">
+		<p class="h2">		<i class="fas fa-globe"></i>
+            World Countries Data</p>
+        </div>
 	</div>
 	<script src="js/addUser.js"></script>
 	<div class="ml-0 order-0">
@@ -40,7 +42,21 @@
 	<div class="row mt-5">
 		<div class="col-12 rounded mb-3">
 			<div class="card">
-				<div class="card-header shadowForBoxHeader border-0">NOM DU PAYS</div>
+				<div class="card-header shadowForBoxHeader border-0">
+                    <div class="row">
+                    <div class="col-4 col-md-5">
+                       <p class="h4 nomDuPays">Nom du pays</p>
+                    </div>
+                        <div class="col-6 offset-md-2 col-md-3 ">
+                            <audio controls id="anthem" src="">
+                                Your browser does not support the
+                                <code>audio</code> element.
+                            </audio></div>
+                    <div class="col-1 offset-1 offset-md-1 col-md-1 ">
+                        <i id="star" class="far fa-star"></i>
+                    </div>
+                    </div>
+                </div>
 				<div class = "card-body row table-primary shadowForBox  border-0 ml-0 mr-0">
 					<div class="col-11 col-md-4 mb-1 mb-md-0">
 						<img src="" alt="drapeau" class = "imgFlag" id="imgFlagId"/>
@@ -91,7 +107,9 @@
 	<div class="row mt-3">
 		<div class="col-12 rounded mb-3">
 			<div class="card">
-				<div class="card-header shadowForBoxHeader border-0">NOM DU PAYS</div>
+				<div class="card-header shadowForBoxHeader border-0">
+                    <p class="h4 nomDuPays">Nom du pays</p>
+                </div>
 				<div class = "row card-body table-primary shadowForBox ml-0 mr-0">
 					<div class="col-12 col-md-4 mb-1 mb-md-0">
 						<img src="" alt="map" class = "imgFlag mb-3" id="imgMapId"/>
